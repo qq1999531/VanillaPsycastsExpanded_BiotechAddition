@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<HediffDef ParentName="PsycastHediffBase">
+        <defName>VPEBA_FogofToxin</defName>
+        <label>Fog of Toxin</label>
+        <description>you are the source of toxin</description>
+        <initialSeverity>1</initialSeverity>
+        <hediffClass>HediffWithComps</hediffClass>
+        <comps>
+			<li Class="VanillaPsycastsExpanded_BiotechAddition.HediffCompProperties_DoDamageInRadius">
+                <compClass>VanillaPsycastsExpanded_BiotechAddition.HediffComp_DoDamageInRadius</compClass>
+                <damageType>ToxGas</damageType>
+                <damageAmount>3</damageAmount>
+				<tickInterval>60</tickInterval>
+				<armorPenetration>1</armorPenetration>
+				<radius>10</radius>
+            </li>
+			<li Class="VanillaPsycastsExpanded_BiotechAddition.HediffCompProperties_PolluteRadius">
+                <compClass>VanillaPsycastsExpanded_BiotechAddition.HediffComp_PolluteRadius</compClass>
+				<tickInterval>60</tickInterval>
+				<radius>10</radius>
+            </li>
+			<li Class="VanillaPsycastsExpanded.HediffCompProperties_DisappearsOnDespawn"/>
+        </comps>
+        <stages>
+            <li>
+                <statFactors>
+					<ToxicResistance>2</ToxicResistance>
+                    <ToxicEnvironmentResistance>2</ToxicEnvironmentResistance>
+                </statFactors>
+                <statOffsets>
+                    <ToxicResistance>10</ToxicResistance>
+                    <ToxicEnvironmentResistance>10</ToxicEnvironmentResistance>
+                </statOffsets>
+            </li>
+        </stages>
+    </HediffDef>
+	<HediffDef ParentName="InjuryBase">
+        <defName>VPEBA_PollutionAccumulation</defName>
+        <label>Pollution Accumulation</label>
+        <description>Pollution accumulat in your body</description>
+        <comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>0.25</severityPerDay>
+			</li>
+        </comps>
+        <injuryProps>
+			<painPerSeverity>0.2</painPerSeverity>
+			<canMerge>true</canMerge>
+		</injuryProps>
+    </HediffDef>
+</Defs>
