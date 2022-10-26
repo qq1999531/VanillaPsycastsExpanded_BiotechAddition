@@ -50,7 +50,7 @@
 	  <showUndrafted>true</showUndrafted>
       <modExtensions>
         <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-          <path>VPE_Conflagrator</path>
+          <path>VPEBA_Toxion</path>
           <level>3</level>
           <order>2</order>
           <psyfocusCost>0.02</psyfocusCost>
@@ -77,7 +77,7 @@
 	  <showUndrafted>true</showUndrafted>
       <modExtensions>
         <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-          <path>VPE_Conflagrator</path>
+          <path>VPEBA_Toxion</path>
           <level>3</level>
           <order>2</order>
           <psyfocusCost>0.02</psyfocusCost>
@@ -141,7 +141,7 @@
 	  <showUndrafted>true</showUndrafted>
       <modExtensions>
         <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-          <path>VPE_Conflagrator</path>
+          <path>VPEBA_Toxion</path>
           <level>3</level>
           <order>2</order>
           <psyfocusCost>0.02</psyfocusCost>
@@ -153,6 +153,75 @@
 		<li Class="VanillaPsycastsExpanded_BiotechAddition.AbilityExtension_Radius">
           <radius>10</radius>
 		  <secondradius>5</secondradius>
+        </li>
+      </modExtensions>
+    </VFECore.Abilities.AbilityDef>
+	<VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+	  <defName>VPEBA_ToxExplosive</defName>
+	  <label>Tox Explosive</label>
+	  <iconPath>UI/poison_flask</iconPath>
+	  <description>Throw a noxious concoction that bursts into a thick cloud of Tox gas. The Tox gas will remain in proximity for a small time before dispersing. Any person that inhales the fumes will suffer corrosive damage to their throat and lungs.</description>
+      <abilityClass>VFECore.Abilities.Ability_ShootProjectile</abilityClass>
+      <castTime>60</castTime>
+	  <cooldownTime>240</cooldownTime>
+      <range>20</range>
+      <radius>4</radius>
+	  <targetingParameters>
+          <canTargetPawns>true</canTargetPawns>
+          <canTargetBuildings>true</canTargetBuildings>
+          <canTargetSelf>true</canTargetSelf>
+          <canTargetLocations>true</canTargetLocations>
+	  </targetingParameters>
+      <power>1</power>
+      <powerStatFactors>
+        <PsychicSensitivity>1</PsychicSensitivity>
+      </powerStatFactors>
+      <targetMode>Location</targetMode>
+      <castSound>ThrowGrenade</castSound>
+      <modExtensions>
+        <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+          <path>VPEBA_Toxion</path>
+          <level>1</level>
+          <order>1</order>
+          <psyfocusCost>0.02</psyfocusCost>
+          <entropyGain>12</entropyGain>
+        </li>
+        <li Class="VFECore.Abilities.AbilityExtension_Projectile">
+          <projectile>VPEBA_Projectile_ToxExplosive</projectile>
+        </li>
+      </modExtensions>
+	</VFECore.Abilities.AbilityDef>
+	<VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+      <defName>VPEBA_Poison</defName>
+      <label>Poison</label>
+      <uiIconPath>UI/poison</uiIconPath>
+      <description>Fast acting toxin that works its way into the targets bloodstream. The more a target moves, the more lethal the poison becomes. Poison is ineffective against mechanoids.</description>
+	  <abilityClass>VFECore.Abilities.Ability_ShootProjectile</abilityClass>
+      <castTime>60</castTime>
+	  <cooldownTime>1200</cooldownTime>
+      <range>40</range>
+	  <targetingParameters>
+          <canTargetPawns>true</canTargetPawns>
+          <canTargetBuildings>false</canTargetBuildings>
+          <canTargetSelf>false</canTargetSelf>
+          <canTargetLocations>false</canTargetLocations>
+	  </targetingParameters>
+      <power>1</power>
+      <powerStatFactors>
+        <PsychicSensitivity>1</PsychicSensitivity>
+      </powerStatFactors>
+      <targetMode>Pawn</targetMode>
+      <castSound>ThrowMolotovCocktail</castSound>
+      <modExtensions>
+        <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+          <path>VPEBA_Toxion</path>
+          <level>1</level>
+          <order>2</order>
+          <psyfocusCost>0.02</psyfocusCost>
+          <entropyGain>12</entropyGain>
+        </li>
+        <li Class="VFECore.Abilities.AbilityExtension_Projectile">
+          <projectile>VPEBA_Projectile_Poison</projectile>
         </li>
       </modExtensions>
     </VFECore.Abilities.AbilityDef>

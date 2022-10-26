@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="BaseGas">
+    <defName>VPEBA_Fog_Tox</defName>
+    <label>tox fog</label>
+    <graphicData>
+      <texPath>Things/Gas/Puff</texPath>
+      <drawSize>2.6</drawSize>
+      <color>(0.5,0.8,0,0.20)</color>
+    </graphicData>
+    <gas>
+      <expireSeconds>
+        <min>5</min>
+        <max>5</max>
+      </expireSeconds>
+      <blockTurretTracking>false</blockTurretTracking>
+      <accuracyPenalty>0.8</accuracyPenalty>
+      <rotationSpeed>75</rotationSpeed>
+    </gas>
+	</ThingDef>
+	<ThingDef ParentName="MoteBase">
+    <defName>VPEBA_Mote_Poison</defName>
+    <graphicData>
+      <texPath>Motes/PoisonMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.25</fadeInTime>
+      <solidTime>0.05</solidTime>
+      <fadeOutTime>0.35</fadeOutTime>
+    </mote>
+  </ThingDef>
+</Defs>

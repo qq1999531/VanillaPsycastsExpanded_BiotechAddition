@@ -1,5 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
+	<HediffDef Name="VPEBA_InjuryBase" Abstract="True">
+		<hediffClass>Hediff_Injury</hediffClass>
+		<tendable>true</tendable>
+		<displayWound>true</displayWound>
+		<labelNounPretty>{0} in the {1}</labelNounPretty>
+    </HediffDef>
+	<HediffDef>
+    <defName>VPEBA_Slow</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.8, 0.8, 1)</defaultLabelColor>
+    <label>Slowed</label>
+	<description>Effects of an ability that reduces physical and mental agility.</description>
+	<makesSickThought>false</makesSickThought>
+    <lethalSeverity>100</lethalSeverity>
+	<isBad>true</isBad>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-80</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+	  <li>
+        <label>minor</label>
+        <minSeverity>0.1</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.2</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.2</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.1</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <label>major</label>
+        <minSeverity>2</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.3</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.4</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.2</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <label>extreme</label>
+        <minSeverity>5</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.4</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.6</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.3</offset>
+          </li>
+        </capMods>
+      </li>  	  
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="VPEBA_InjuryBase">  
+    <defName>VPEBA_Poison</defName>
+    <label>Poison</label>
+	<description>Damage caused by poison.</description>
+    <displayWound>true</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_GetsPermanent">
+        <permanentLabel>withered away</permanentLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.025</painPerSeverity>
+		<averagePainPerSeverityPermanent>0.00625</averagePainPerSeverityPermanent>
+		<bleedRate>0.0</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>withered</destroyedLabel>
+			<destroyedOutLabel>withered</destroyedOutLabel>
+	</injuryProps>
+  </HediffDef>
 	<HediffDef ParentName="PsycastHediffBase">
         <defName>VPEBA_FogofToxin</defName>
         <label>Fog of Toxin</label>
@@ -49,4 +150,55 @@
 			<canMerge>true</canMerge>
 		</injuryProps>
     </HediffDef>
+	<HediffDef>
+    <defName>VPEBA_Poisoned</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.52, 0.9, 0.05)</defaultLabelColor>
+    <label>Poisoned</label>
+	<description>Side effects of poison.</description>
+	<makesSickThought>true</makesSickThought>
+	<displayWound>false</displayWound>
+    <maxSeverity>5</maxSeverity>
+	<isBad>true</isBad>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-50</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+	  <li>
+        <label>minor</label>
+		<vomitMtbDays>0.25</vomitMtbDays>
+        <minSeverity>0.1</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.2</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <label>moderate</label>
+		<vomitMtbDays>0.125</vomitMtbDays>
+        <minSeverity>3</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.3</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <label>major</label>
+		<vomitMtbDays>0.1</vomitMtbDays>
+        <minSeverity>6</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.4</offset>
+          </li>
+        </capMods>
+      </li>  	  
+    </stages>
+  </HediffDef>
 </Defs>

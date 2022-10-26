@@ -8,5 +8,8 @@ namespace VanillaPsycastsExpanded_BiotechAddition
     {
         public static HediffDef VPEBA_PollutionAccumulation;
         public static HediffDef VPEBA_GreyGoo;
+		public static HediffDef VPEBA_Poisoned;
+		public static ThingDef VPEBA_Fog_Tox;
+		public static ThingDef VPEBA_Mote_Poison;
     }
 }

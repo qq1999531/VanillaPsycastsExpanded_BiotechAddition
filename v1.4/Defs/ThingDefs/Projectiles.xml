@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="BaseBullet">
+		<thingClass>VanillaPsycastsExpanded_BiotechAddition.Projectile_ToxExplosive</thingClass>
+	    <defName>VPEBA_Projectile_ToxExplosive</defName>
+        <label>Tox Explosive</label>
+        <graphicData>
+			<texPath>UI/poison_flask</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<soundExplode>Explosion_Smoke</soundExplode>
+            <damageDef>VPEBA_AcidBurn</damageDef>
+            <damageAmountBase>4</damageAmountBase>
+            <speed>20</speed>
+			<explosionRadius>4</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+    <ThingDef ParentName="BaseBullet">
+		<thingClass>VanillaPsycastsExpanded_BiotechAddition.Projectile_Poison</thingClass>
+	    <defName>VPEBA_Projectile_Poison</defName>
+        <label>poison</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>VPEBA_Poison</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>900</speed>
+        </projectile>
+    </ThingDef>
+</Defs>
