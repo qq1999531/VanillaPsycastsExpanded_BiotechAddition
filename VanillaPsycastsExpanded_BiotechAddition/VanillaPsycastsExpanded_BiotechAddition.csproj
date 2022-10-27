@@ -71,16 +71,22 @@
     <Compile Include="Paths\Toxion\AbilityExtension_Pollute.cs" />
     <Compile Include="Paths\Toxion\AbilityExtension_Radius.cs" />
     <Compile Include="Paths\Toxion\AbilityExtension_Unpollute.cs" />
+    <Compile Include="Paths\Toxion\Ability_ManipulateGene.cs" />
     <Compile Include="Paths\Toxion\Ability_Pollute.cs" />
     <Compile Include="Paths\Toxion\Ability_PsychicGreyGoo.cs" />
     <Compile Include="Paths\Toxion\Ability_Unpollute.cs" />
     <Compile Include="Paths\Toxion\HediffComp_DoDamageInRadius.cs" />
     <Compile Include="Paths\Toxion\HediffComp_GreyGoo.cs" />
     <Compile Include="Paths\Toxion\HediffComp_PolluteRadius.cs" />
+    <Compile Include="Paths\Toxion\PollutionRain.cs" />
+    <Compile Include="Paths\Toxion\Projectile_Poison.cs" />
+    <Compile Include="Paths\Toxion\Projectile_ToxExplosive.cs" />
+    <Compile Include="Paths\Toxion\WeatherOverlay_PolluteEffects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PsycasterPathExtension_BiotechRequirement.cs" />
     <Compile Include="PsycastsBiotechAddMod.cs" />
     <Compile Include="VPEBA_DefOf.cs" />
+    <Compile Include="VPEBA_MoteMaker.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

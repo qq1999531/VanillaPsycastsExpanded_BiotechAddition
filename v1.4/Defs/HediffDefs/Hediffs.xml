@@ -77,6 +77,23 @@
       </li>  	  
     </stages>
   </HediffDef>
+  <HediffDef>
+    <defName>VPEBA_GreyGoo</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Grey Goo</label>
+	<description>Grey Goo heal the pawn.</description>
+    <initialSeverity>0.01</initialSeverity>
+	<comps>
+      <li Class="HediffComp_GreyGoo"/>
+    </comps>
+    <stages>
+            <li>
+                <statFactors>
+					<InjuryHealingFactor>10</InjuryHealingFactor>
+                </statFactors>
+            </li>	  
+    </stages>
+  </HediffDef>
   <HediffDef ParentName="VPEBA_InjuryBase">  
     <defName>VPEBA_Poison</defName>
     <label>Poison</label>
@@ -201,4 +218,32 @@
       </li>  	  
     </stages>
   </HediffDef>
+  <HediffDef ParentName="PsycastHediffBase">
+        <defName>VPEBA_ToxShield</defName>
+        <label>tox shield</label>
+        <description>A shield of tox, sets melee attackers toxed</description>
+        <initialSeverity>1</initialSeverity>
+        <hediffClass>HediffWithComps</hediffClass>
+        <comps>
+            <li Class="VFECore.Shields.HediffCompProperties_Shield">
+                <graphic>
+                    <texPath>Effects/Conflagrator/FireShieldBubble/FireShieldBubble</texPath>
+                    <drawSize>(2, 2)</drawSize>
+                    <graphicClass>Graphic_Single</graphicClass>
+                    <shaderType>TransparentPostLight</shaderType>
+                </graphic>
+                <absorbAttackType>Both</absorbAttackType>
+                <absorb>
+                    <li>Toxgas</li>
+                </absorb>
+                <sustainer>VPE_FireShield_Sustainer</sustainer>
+                <soundEnded>VPE_FireShield_End</soundEnded>
+                <doDust>false</doDust>
+                <absorbedFleck>ExplosionFlash</absorbedFleck>
+                <damageOnAttack>Melee</damageOnAttack>
+                <damageType>Toxgas</damageType>
+                <damageAmount>3</damageAmount>
+            </li>
+        </comps>
+    </HediffDef>
 </Defs>

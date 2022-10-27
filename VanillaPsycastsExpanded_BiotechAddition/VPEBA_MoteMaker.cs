@@ -1,14 +1,11 @@
-using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
-using RimWorld;
 
 namespace VanillaPsycastsExpanded_BiotechAddition
 {
-	public static class VPEBA_MoteMaker
-	{
-		public static void ThrowPoisonMote(Vector3 loc, Map map, float scale)
+    public static class VPEBA_MoteMaker
+    {
+        public static void ThrowPoisonMote(Vector3 loc, Map map, float scale)
         {
             if (!loc.ShouldSpawnMotesAt(map) || map.moteCounter.SaturatedLowPriority)
             {
@@ -21,5 +18,5 @@ namespace VanillaPsycastsExpanded_BiotechAddition
             moteThrown.SetVelocity((float)Rand.Range(0, 360), Rand.Range(0.4f, 0.5f));
             GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
         }
-	}
+    }
 }

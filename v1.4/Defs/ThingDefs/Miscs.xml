@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<ThingDef ParentName="EtherealThingBase">
+        <defName>VPEBA_PollutionRainMaker</defName>
+        <label>Pollution Rain Maker</label>
+        <thingClass>VanillaPsycastsExpanded_BiotechAddition.PollutionRainMaker</thingClass>
+        <tickerType>Normal</tickerType>
+    </ThingDef>
+</Defs>

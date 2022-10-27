@@ -1,13 +1,12 @@
 ﻿using RimWorld;
-using UnityEngine;
 using Verse;
-using Verse.Sound;
+using System.Linq;
+using System.Collections.Generic;
 using VFECore.Abilities;
 namespace VanillaPsycastsExpanded_BiotechAddition
 {
-	using RimWorld.Planet;
-	public class Projectile_ToxExplosive : AbilityProjectile
-	{
+    public class Projectile_ToxExplosive : AbilityProjectile
+    {
         private int age = -1;
         private int duration = 360;
         private bool initialized = false;
@@ -22,20 +21,20 @@ namespace VanillaPsycastsExpanded_BiotechAddition
         }
         protected override void DoImpact(Thing hitThing, Map map)
         {
-            age++;            
+            age++;
             if (age < duration)
             {
-				float power = 3 * this.ability.GetPowerForPawn();
+                float power = 3 * this.ability.GetPowerForPawn();
                 Pawn caster = this.launcher as Pawn;
                 if (caster != null && !initialized)
                 {
                     initialized = true;
                     radius = this.def.projectile.explosionRadius + (.8f * power);
-                    duration = 360 + (60 * power);
+                    duration = 360 + (int)(60 * power);
                     ThingDef fog = VPEBA_DefOf.VPEBA_Fog_Tox;
                     fog.gas.expireSeconds.min = duration / 60;
                     fog.gas.expireSeconds.max = duration / 60;
-                    GenExplosion.DoExplosion(base.Position, map, radius, this.def.projectile.damageDef, this, 0, 0, SoundDef.Named("TinyBell"), def, null, null, fog, 1f, 1, false, null, 0f, 0, 0.0f, false);
+                    GenExplosion.DoExplosion(base.Position, map, radius, this.def.projectile.damageDef, this, 0, 0, SoundDef.Named("TinyBell"), def, null, null, fog, 1f, 1,GasType.ToxGas, false, null, 0f, 0, 0.0f, false);
                 }
 
                 if (this.age >= this.lastStrike + this.strikeDelay)
@@ -64,10 +63,10 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                             }
                             if (bprList != null && bprList.Count > 0 && caster != null)
                             {
-								float amt = Rand.Range(1f, 2f);
-								amt = Rand.Range(amt * .75f, amt * 1.25f);
-								DamageInfo dinfo = new DamageInfo(this.def.projectile.damageDef, amt, 2f, (float)-1, this.launcher, bprList.RandomElement(), this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);
-								hitThing.TakeDamage(dinfo);
+                                float amt = Rand.Range(1f, 2f);
+                                amt = Rand.Range(amt * .75f, amt * 1.25f);
+                                DamageInfo dinfo = new DamageInfo(this.def.projectile.damageDef, amt, 2f, (float)-1, this.launcher, bprList.RandomElement(), this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);
+                                hitThing.TakeDamage(dinfo);
                             }
                         }
                     }
@@ -80,7 +79,5 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                 }
             }
         }
-    }	
+    }
 }
-
-

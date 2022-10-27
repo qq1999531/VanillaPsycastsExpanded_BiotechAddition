@@ -3,6 +3,7 @@ using Verse;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using VFECore.Abilities;
 
 
 namespace VanillaPsycastsExpanded_BiotechAddition
@@ -18,7 +19,6 @@ namespace VanillaPsycastsExpanded_BiotechAddition
         private IntVec3 oldPosition;
         Pawn hitPawn = null;
         Pawn caster = null;
-
         public override void ExposeData()
         {
             base.ExposeData();
@@ -30,22 +30,20 @@ namespace VanillaPsycastsExpanded_BiotechAddition
             Scribe_Values.Look<IntVec3>(ref this.oldPosition, "oldPosition", default(IntVec3), false);
             Scribe_References.Look<Pawn>(ref this.hitPawn, "hitPawn", false);
         }
-
         protected override void DoImpact(Thing hitThing, Map map)
         {
-            ThingDef def = this.def;
-            caster = this.launcher as Pawn;
-			float power = 3 * this.ability.GetPowerForPawn();
+            caster = launcher as Pawn;
+            float power = 3 * this.ability.GetPowerForPawn();
             if (!initialized)
             {
                 hitPawn = hitThing as Pawn;
                 if (hitThing != null && hitPawn.needs.food != null)
                 {
-                    duration += (power * 180);                    
+                    duration += (int)(power * 180);
                     Initialize(hitPawn);
                     oldPosition = hitPawn.Position;
-                    damageEntities(hitPawn, null, 4 , this.def.projectile.damageDef);
-                    HealthUtility.AdjustSeverity(hitPawn, VPEBA_DefOf.VPEBA_Poisoned, Rand.Range(1f + power, 4f + (2f * power)));                    
+                    damageEntities(hitPawn, null, 4, this.def.projectile.damageDef);
+                    HealthUtility.AdjustSeverity(hitPawn, VPEBA_DefOf.VPEBA_Poisoned, Rand.Range(1f + power, 4f + (2f * power)));
                     initialized = true;
                     VPEBA_MoteMaker.ThrowPoisonMote(hitPawn.Position.ToVector3(), map, 2.2f);
                 }
@@ -56,7 +54,6 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                     this.Destroy(DestroyMode.Vanish);
                 }
             }
-
             if (age > (lastPoison + poisonRate))
             {
                 try
@@ -92,15 +89,13 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                     this.Destroy(DestroyMode.Vanish);
                 }
             }
-            
         }
-
         public void Initialize(Pawn victim)
         {
             BodyPartRecord vitalPart = null;
             if (victim != null && !victim.Dead)
             {
-                
+
                 IEnumerable<BodyPartRecord> partSearch = victim.def.race.body.AllParts;
                 vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.BloodPumpingSource));
                 if (vitalPart != null)
@@ -133,11 +128,10 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                 }
             }
         }
-
         public void damageEntities(Pawn victim, BodyPartRecord hitPart, int amt, DamageDef type)
         {
             DamageInfo dinfo;
-            amt = Mathf.RoundToInt((float)amt * Rand.Range(.5f, 1.2f) * 3 * this.ability.GetPowerForPawn());
+            amt = Mathf.RoundToInt(amt * Rand.Range(.5f, 1.2f) * 3 * this.ability.GetPowerForPawn());
             if (this.caster != null && victim != null && !victim.Dead && !victim.Downed && hitPart != null)
             {
                 dinfo = new DamageInfo(type, amt, 0, (float)-1, this.caster, hitPart, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);
@@ -145,13 +139,11 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                 victim.TakeDamage(dinfo);
             }
         }
-
         public override void Tick()
         {
             base.Tick();
             this.age++;
         }
-
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {
             bool flag = this.age < duration;

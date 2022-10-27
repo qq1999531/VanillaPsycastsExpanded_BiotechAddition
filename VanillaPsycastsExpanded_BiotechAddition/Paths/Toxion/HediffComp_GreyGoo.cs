@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Verse;
 
-namespace VanillaPsycastsExpanded_BiotechAddition.Paths.Toxion
+namespace VanillaPsycastsExpanded_BiotechAddition
 {
     class HediffComp_GreyGoo : HediffComp
     {

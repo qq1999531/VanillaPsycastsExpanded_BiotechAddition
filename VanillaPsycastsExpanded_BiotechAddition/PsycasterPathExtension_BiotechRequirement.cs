@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Verse;
 using RimWorld;
 
@@ -14,7 +13,7 @@ namespace VanillaPsycastsExpanded_BiotechAddition
         {
             if (requiredGenes.NullOrEmpty()) return true;
             foreach (var requirement in requiredGenes)
-                if ((pawn.genes?.HasXenogene(requirement) ?? false) || (pawn.genes?.HasEndogene(requirement) ?? false))
+                if (pawn.genes?.HasGene(requirement) ?? false)
                     return true;
             return false;
         }

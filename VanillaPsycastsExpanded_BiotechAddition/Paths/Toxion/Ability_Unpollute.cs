@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using Verse;
 using RimWorld.Planet;
-using RimWorld;
-using UnityEngine;
 using Ability = VFECore.Abilities.Ability;
 
 namespace VanillaPsycastsExpanded_BiotechAddition

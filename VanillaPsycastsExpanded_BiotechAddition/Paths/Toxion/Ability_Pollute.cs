@@ -13,7 +13,8 @@ namespace VanillaPsycastsExpanded_BiotechAddition
         public override void Cast(params GlobalTargetInfo[] targets)
         {
             base.Cast(targets);
-            if (pawn.Spawned && def.HasModExtension<AbilityExtension_Radius>())
+            bool check = pawn.health.hediffSet.HasHediff(VPEBA_DefOf.VPEBA_PollutionAccumulation) && pawn.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_PollutionAccumulation).Severity > 0;
+            if (check && pawn.Spawned && def.HasModExtension<AbilityExtension_Radius>())
             {
                 radius = def.GetModExtension<AbilityExtension_Radius>().radius;
                 foreach (GlobalTargetInfo target in targets)
@@ -33,6 +34,11 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                     }
                 }
             }
+        }
+        public override bool ValidateTarget(LocalTargetInfo target, bool showMessages = true)
+        {
+            bool check = pawn.health.hediffSet.HasHediff(VPEBA_DefOf.VPEBA_PollutionAccumulation) && pawn.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_PollutionAccumulation).Severity > 0;
+            return check && base.ValidateTarget(target, showMessages);
         }
     }
 }

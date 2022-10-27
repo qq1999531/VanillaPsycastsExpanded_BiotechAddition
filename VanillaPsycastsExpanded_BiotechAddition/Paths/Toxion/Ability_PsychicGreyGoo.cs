@@ -34,7 +34,7 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                                     {
                                         {
                                             List<BodyPartRecord> partSearch = victim.def.race.body.AllParts;
-                                            int rndPart = Rand.RangeInclusive(0, partSearch.Count - 1);
+                                            int rndPart = Rand.Range(0, partSearch.Count);
                                             victim.TakeDamage(new DamageInfo(DamageDefOf.Vaporize, 1000, 1, -1, pawn, partSearch[rndPart]));
                                             if (!pawn.health.hediffSet.HasHediff(VPEBA_DefOf.VPEBA_GreyGoo))
                                             {

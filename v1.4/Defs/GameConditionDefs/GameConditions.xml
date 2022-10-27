@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <GameConditionDef>
+        <defName>VPEBA_PollutionRain</defName>
+        <conditionClass>GameCondition_ForceWeather</conditionClass>
+        <label>forced pollution rain</label>
+        <description>A Toxion is forcing a pollution rain.</description>
+        <letterDef>NegativeEvent</letterDef>
+        <canBePermanent>false</canBePermanent>
+        <weatherDef>VPEBA_PollutionRain</weatherDef>
+    </GameConditionDef>
+</Defs>
