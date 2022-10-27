@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<ThingDef ParentName="BaseGas">
+	<ThingDef Name="VPEBA_BaseGas" Abstract="True">
+		<thingClass>Gas</thingClass>
+		<label>gas</label>
+		<category>Gas</category>
+		<altitudeLayer>Gas</altitudeLayer>
+		<useHitPoints>false</useHitPoints>
+		<tickerType>Normal</tickerType>
+		<graphicData>
+      <graphicClass>Graphic_Gas</graphicClass>
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+	</ThingDef>
+	<ThingDef ParentName="VPEBA_BaseGas">
     <defName>VPEBA_Fog_Tox</defName>
     <label>tox fog</label>
     <graphicData>
@@ -13,8 +25,6 @@
         <min>5</min>
         <max>5</max>
       </expireSeconds>
-      <blockTurretTracking>false</blockTurretTracking>
-      <accuracyPenalty>0.8</accuracyPenalty>
       <rotationSpeed>75</rotationSpeed>
     </gas>
 	</ThingDef>

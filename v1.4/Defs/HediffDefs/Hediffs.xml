@@ -84,7 +84,9 @@
 	<description>Grey Goo heal the pawn.</description>
     <initialSeverity>0.01</initialSeverity>
 	<comps>
-      <li Class="HediffComp_GreyGoo"/>
+	  <li Class="HediffCompProperties">
+		<compClass>VanillaPsycastsExpanded_BiotechAddition.HediffComp_GreyGoo</compClass>
+	  </li>
     </comps>
     <stages>
             <li>
@@ -153,7 +155,7 @@
             </li>
         </stages>
     </HediffDef>
-	<HediffDef ParentName="InjuryBase">
+	<HediffDef ParentName="PsycastHediffBase">
         <defName>VPEBA_PollutionAccumulation</defName>
         <label>Pollution Accumulation</label>
         <description>Pollution accumulat in your body</description>
@@ -162,10 +164,6 @@
 				<severityPerDay>0.25</severityPerDay>
 			</li>
         </comps>
-        <injuryProps>
-			<painPerSeverity>0.2</painPerSeverity>
-			<canMerge>true</canMerge>
-		</injuryProps>
     </HediffDef>
 	<HediffDef>
     <defName>VPEBA_Poisoned</defName>
@@ -197,7 +195,7 @@
       <li>
         <label>moderate</label>
 		<vomitMtbDays>0.125</vomitMtbDays>
-        <minSeverity>3</minSeverity>
+        <minSeverity>0.3</minSeverity>
         <capMods>
           <li>
             <capacity>Moving</capacity>
@@ -208,7 +206,7 @@
       <li>
         <label>major</label>
 		<vomitMtbDays>0.1</vomitMtbDays>
-        <minSeverity>6</minSeverity>
+        <minSeverity>0.6</minSeverity>
         <capMods>
           <li>
             <capacity>Moving</capacity>
@@ -226,6 +224,7 @@
         <hediffClass>HediffWithComps</hediffClass>
         <comps>
             <li Class="VFECore.Shields.HediffCompProperties_Shield">
+				<compClass>VFECore.Shields.HediffComp_Shield</compClass>
                 <graphic>
                     <texPath>Effects/Conflagrator/FireShieldBubble/FireShieldBubble</texPath>
                     <drawSize>(2, 2)</drawSize>
@@ -234,14 +233,14 @@
                 </graphic>
                 <absorbAttackType>Both</absorbAttackType>
                 <absorb>
-                    <li>Toxgas</li>
+                    <li>ToxGas</li>
                 </absorb>
                 <sustainer>VPE_FireShield_Sustainer</sustainer>
                 <soundEnded>VPE_FireShield_End</soundEnded>
                 <doDust>false</doDust>
                 <absorbedFleck>ExplosionFlash</absorbedFleck>
                 <damageOnAttack>Melee</damageOnAttack>
-                <damageType>Toxgas</damageType>
+                <damageType>ToxGas</damageType>
                 <damageAmount>3</damageAmount>
             </li>
         </comps>

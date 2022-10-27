@@ -22,12 +22,12 @@
       <modExtensions>
         <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
           <path>VPEBA_Toxion</path>
-          <level>3</level>
-          <order>2</order>
-          <psyfocusCost>0.02</psyfocusCost>
+          <level>4</level>
+          <order>1</order>
+          <psyfocusCost>0.08</psyfocusCost>
           <entropyGain>25</entropyGain>
           <prerequisites>
-            <li>PlaceHolder</li>
+            <li>VPEBA_ToxExplosive</li>
           </prerequisites>
         </li>
         <li Class="VFECore.Abilities.AbilityExtension_Hediff">
@@ -51,8 +51,8 @@
       <modExtensions>
         <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
           <path>VPEBA_Toxion</path>
-          <level>3</level>
-          <order>2</order>
+          <level>1</level>
+          <order>1</order>
           <psyfocusCost>0.02</psyfocusCost>
           <entropyGain>25</entropyGain>
           <prerequisites>
@@ -78,13 +78,10 @@
       <modExtensions>
         <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
           <path>VPEBA_Toxion</path>
-          <level>3</level>
+          <level>1</level>
           <order>2</order>
           <psyfocusCost>0.02</psyfocusCost>
-          <entropyGain>25</entropyGain>
-          <prerequisites>
-            <li>VPE_SelfExplosion</li>
-          </prerequisites>
+          <entropyGain>12</entropyGain>
         </li>
 		<li Class="VanillaPsycastsExpanded_BiotechAddition.AbilityExtension_Radius">
           <radius>10</radius>
@@ -115,10 +112,10 @@
           <path>VPEBA_Toxion</path>
           <level>3</level>
           <order>2</order>
-          <psyfocusCost>0.02</psyfocusCost>
-          <entropyGain>25</entropyGain>
+          <psyfocusCost>0.06</psyfocusCost>
+          <entropyGain>30</entropyGain>
           <prerequisites>
-            <li>PlaceHolder</li>
+            <li>VPEBA_ToxShield</li>
           </prerequisites>
         </li>
         <li Class="VFECore.Abilities.AbilityExtension_Hediff">
@@ -142,12 +139,12 @@
       <modExtensions>
         <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
           <path>VPEBA_Toxion</path>
-          <level>3</level>
+          <level>4</level>
           <order>2</order>
-          <psyfocusCost>0.02</psyfocusCost>
-          <entropyGain>25</entropyGain>
+          <psyfocusCost>0.5</psyfocusCost>
+          <entropyGain>90</entropyGain>
           <prerequisites>
-            <li>VPE_SelfExplosion</li>
+            <li>VPEBA_ToxExplosive</li>
           </prerequisites>
         </li>
 		<li Class="VanillaPsycastsExpanded_BiotechAddition.AbilityExtension_Radius">
@@ -181,10 +178,13 @@
       <modExtensions>
         <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
           <path>VPEBA_Toxion</path>
-          <level>1</level>
+          <level>3</level>
           <order>1</order>
-          <psyfocusCost>0.02</psyfocusCost>
-          <entropyGain>12</entropyGain>
+          <psyfocusCost>0.06</psyfocusCost>
+          <entropyGain>30</entropyGain>
+          <prerequisites>
+            <li>VPEBA_Poison</li>
+          </prerequisites>
         </li>
         <li Class="VFECore.Abilities.AbilityExtension_Projectile">
           <projectile>VPEBA_Projectile_ToxExplosive</projectile>
@@ -194,7 +194,7 @@
 	<VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
       <defName>VPEBA_Poison</defName>
       <label>Poison</label>
-      <uiIconPath>UI/poison</uiIconPath>
+      <iconPath>UI/poison</iconPath>
       <description>Fast acting toxin that works its way into the targets bloodstream. The more a target moves, the more lethal the poison becomes. Poison is ineffective against mechanoids.</description>
 	  <abilityClass>VFECore.Abilities.Ability_ShootProjectile</abilityClass>
       <castTime>60</castTime>
@@ -215,10 +215,14 @@
       <modExtensions>
         <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
           <path>VPEBA_Toxion</path>
-          <level>1</level>
-          <order>2</order>
-          <psyfocusCost>0.02</psyfocusCost>
-          <entropyGain>12</entropyGain>
+          <level>2</level>
+          <order>1</order>
+          <psyfocusCost>0.06</psyfocusCost>
+          <entropyGain>30</entropyGain>
+          <prerequisites>
+            <li>VPEBA_Pollute</li>
+			<li>VPEBA_Unpollute</li>
+          </prerequisites>
         </li>
         <li Class="VFECore.Abilities.AbilityExtension_Projectile">
           <projectile>VPEBA_Projectile_Poison</projectile>
@@ -242,7 +246,7 @@
           <psyfocusCost>0.5</psyfocusCost>
           <entropyGain>0</entropyGain>
           <prerequisites>
-            <li>VPE_Vortex</li>
+            <li>VPEBA_FogofToxin</li>
           </prerequisites>
         </li>
       </modExtensions>
@@ -266,16 +270,46 @@
       <modExtensions>
         <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
           <path>VPEBA_Toxion</path>
-          <level>3</level>
+          <level>2</level>
           <order>2</order>
           <psyfocusCost>0.02</psyfocusCost>
           <entropyGain>25</entropyGain>
           <prerequisites>
-            <li>VPE_SelfExplosion</li>
+            <li>VPEBA_Pollute</li>
+			<li>VPEBA_Unpollute</li>
           </prerequisites>
         </li>
         <li Class="VFECore.Abilities.AbilityExtension_Hediff">
           <hediff>VPEBA_ToxShield</hediff>
+        </li>
+      </modExtensions>
+    </VFECore.Abilities.AbilityDef>
+	<VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+      <defName>VPEBA_ManipulateGene</defName>
+      <label>Manipulate Gene</label>
+      <description>Manipulate Gene</description>
+      <iconPath>Abilities/Conflagrator/FireShield</iconPath>
+      <abilityClass>VanillaPsycastsExpanded_BiotechAddition.Ability_ManipulateGene</abilityClass>
+      <range>10</range>
+      <targetMode>Pawn</targetMode>
+      <targetingParameters>
+        <canTargetSelf>true</canTargetSelf>
+        <canTargetBuildings>false</canTargetBuildings>
+      </targetingParameters>
+      <castTime>15</castTime>
+      <durationTime>1200</durationTime>
+      <castSound>VPE_FireShield_Cast</castSound>
+	  <showUndrafted>true</showUndrafted>
+      <modExtensions>
+        <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+          <path>VPEBA_Toxion</path>
+          <level>5</level>
+          <order>2</order>
+          <psyfocusCost>0.5</psyfocusCost>
+          <entropyGain>50</entropyGain>
+          <prerequisites>
+            <li>VPEBA_GrantPollutionStimulus</li>
+          </prerequisites>
         </li>
       </modExtensions>
     </VFECore.Abilities.AbilityDef>

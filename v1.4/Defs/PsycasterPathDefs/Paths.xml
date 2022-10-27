@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<VanillaPsycastsExpanded.PsycasterPathDef>
+        <defName>VPEBA_Toxion</defName>
+        <label>Toxion</label>
+        <description>Toxion.</description>
+        <background>UI/Backgrounds/EmpathPath</background>
+        <altBackground>UI/AlternativeBackgrounds/PathBG_Empath</altBackground>
+        <tab>BioTechAddition</tab>
+        <tooltip>Toxion</tooltip>
+    </VanillaPsycastsExpanded.PsycasterPathDef>
+</Defs>
