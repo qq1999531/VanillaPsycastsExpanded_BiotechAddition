@@ -13,11 +13,9 @@ namespace VanillaPsycastsExpanded_BiotechAddition
             tickCounter++;
             if (tickCounter > Props.tickInterval && Pawn.Spawned)
             {
-                IntVec3 curCell;
                 IEnumerable<IntVec3> targets = GenRadial.RadialCellsAround(Pawn.Position, Props.radius, true);
-                for (int i = 0; i < targets.Count(); i++)
+                foreach(IntVec3 curCell in targets)
                 {
-                    curCell = targets.ToArray<IntVec3>()[i];
                     if (curCell.IsValid)
                     {
                         foreach (Thing affected in curCell.GetThingList(Pawn.Map))
@@ -27,15 +25,15 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                                 if (victim != null && !victim.Dead && victim.RaceProps.IsFlesh && victim != Pawn)
                                 {
                                     {
-                                        victim.TakeDamage(new DamageInfo(Props.damageType, Props.damageAmount, Props.armorPenetration, -1,Pawn));
+                                        victim.TakeDamage(new DamageInfo(Props.damageType, Props.damageAmount, Props.armorPenetration, -1, Pawn));
                                     }
                                 }
                             }
                         }
                     }
                 }
+                tickCounter = 0;
             }
-            tickCounter = 0;
         }
     }
     class HediffCompProperties_DoDamageInRadius : HediffCompProperties

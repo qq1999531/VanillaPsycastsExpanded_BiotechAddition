@@ -21,7 +21,7 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                             if (parent.Severity > 0 && (current.CanHealFromTending() || current.CanHealNaturally()))
                             {
                                 current.Heal(current.def.maxSeverity);
-                                parent.Severity -= 0.01f;
+                                HealthUtility.AdjustSeverity(parent.pawn,parent.def,-0.01f);
                             }
                         }
                     }

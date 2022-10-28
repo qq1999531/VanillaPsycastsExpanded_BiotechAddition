@@ -15,24 +15,22 @@ namespace VanillaPsycastsExpanded_BiotechAddition
             tickCounter++;
             if (tickCounter > Props.tickInterval && Pawn.Spawned)
             {
-                IntVec3 intVec;
+                GasUtility.AddGas(Pawn.Position, Pawn.Map, GasType.ToxGas, Props.radius);
                 IEnumerable<IntVec3> targets = GenRadial.RadialCellsAround(Pawn.Position, Props.radius, true);
-                for (int i = 0; i < targets.Count(); i++)
+                foreach(IntVec3 intVec in targets)
                 {
-                    intVec = targets.ToArray<IntVec3>()[i];
-                    GasUtility.AddGas(intVec, Pawn.Map, GasType.ToxGas, Props.radius);
                     if (!intVec.IsPolluted(Pawn.Map) && intVec.CanPollute(Pawn.Map))
                     {
-                        intVec.Pollute(Pawn.Map, false);
-                        Pawn.Map.effecterMaintainer.AddEffecterToMaintain(EffecterDefOf.CellPollution.Spawn(intVec, Pawn.Map, Vector3.zero, 1f), intVec, 45);
                         if (Pawn.health.hediffSet.HasHediff(VPEBA_DefOf.VPEBA_PollutionAccumulation))
                         {
                             Pawn.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_PollutionAccumulation).Heal(0.01f);
+                            intVec.Pollute(Pawn.Map, false);
+                            Pawn.Map.effecterMaintainer.AddEffecterToMaintain(EffecterDefOf.CellPollution.Spawn(intVec, Pawn.Map, Vector3.zero, 1f), intVec, 45);
                         }
                     }
                 }
+                tickCounter = 0;
             }
-            tickCounter = 0;
         }
     }
     class HediffCompProperties_PolluteRadius : HediffCompProperties

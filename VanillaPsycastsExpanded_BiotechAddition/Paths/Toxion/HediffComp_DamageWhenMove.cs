@@ -1,36 +1,33 @@
-﻿using RimWorld;
-using Verse;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Collections.Generic;
-using UnityEngine;
-using VFECore.Abilities;
-
+using RimWorld;
+using Verse;
 
 namespace VanillaPsycastsExpanded_BiotechAddition
 {
-    public class Projectile_Poison : AbilityProjectile
+    class HediffComp_DamageWhenMove : HediffComp
     {
+        private IntVec3 oldPosition;
+        private bool initialized = true;
+        public int tickCounter = 0;
         BodyPartRecord[] vulnerableParts = new BodyPartRecord[10];
-        Pawn hitPawn = null;
-        Pawn caster = null;
-        protected override void DoImpact(Thing hitThing, Map map)
+        HediffCompProperties_DamageWhenMove Props => props as HediffCompProperties_DamageWhenMove;
+        public override void CompPostTick(ref float severityAdjustment)
         {
-            caster = launcher as Pawn;
-            float power = 3 * this.ability.GetPowerForPawn();
-                hitPawn = hitThing as Pawn;
-                    Initialize(hitPawn);
-                    damageEntities(hitPawn, null, 4, this.def.projectile.damageDef);
-            if (!hitPawn.health.hediffSet.HasHediff(VPEBA_DefOf.VPEBA_Poisoned))
+            tickCounter++;
+            if (initialized)
+            {
+                Initialize(Pawn);
+                oldPosition = Pawn.Position;
+                initialized = false;
+            }
+            if (tickCounter > Props.tickInterval && Pawn.Spawned)
             {
                 int rndPart = Rand.RangeInclusive(0, 4);
-                Hediff hediff = HediffMaker.MakeHediff(VPEBA_DefOf.VPEBA_Poisoned, hitPawn, vulnerableParts[rndPart]);
-                hitPawn.health.AddHediff(hediff);
-                VPEBA_MoteMaker.ThrowPoisonMote(hitPawn.Position.ToVector3(), map, 2.2f);
-            }
-            else
-            {
-                HealthUtility.AdjustSeverity(hitPawn, VPEBA_DefOf.VPEBA_Poisoned, Rand.Range(1f + power, 4f + (2f * power)));
-                VPEBA_MoteMaker.ThrowPoisonMote(hitPawn.Position.ToVector3(), map, 2.2f);
+                int dmg = (int)(((Pawn.Position - oldPosition).LengthHorizontal) * 1.25f);
+                Pawn.TakeDamage(new DamageInfo(Props.damageType, dmg,1,-1,null, vulnerableParts[rndPart]));
+                VPEBA_MoteMaker.ThrowPoisonMote(Pawn.Position.ToVector3(), Pawn.Map, 1f);
+                tickCounter = 0;
             }
         }
         public void Initialize(Pawn victim)
@@ -71,15 +68,15 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                 }
             }
         }
-        public void damageEntities(Pawn victim, BodyPartRecord hitPart, int amt, DamageDef type)
+    }
+    class HediffCompProperties_DamageWhenMove : HediffCompProperties
+    {
+        public int tickInterval = 60;
+        public int damageAmount = -1;
+        public DamageDef damageType;
+        public HediffCompProperties_DamageWhenMove()
         {
-            DamageInfo dinfo;
-            amt = Mathf.RoundToInt(amt * Rand.Range(.5f, 1.2f) * 3 * this.ability.GetPowerForPawn());
-            if (this.caster != null && victim != null && !victim.Dead && !victim.Downed && hitPart != null)
-            {
-                dinfo = new DamageInfo(type, amt, 0, (float)-1, this.caster, hitPart, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);
-                victim.TakeDamage(dinfo);
-            }
+            compClass = typeof(HediffComp_DamageWhenMove);
         }
     }
 }

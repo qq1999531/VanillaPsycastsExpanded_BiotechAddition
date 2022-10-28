@@ -75,6 +75,7 @@
     <Compile Include="Paths\Toxion\Ability_Pollute.cs" />
     <Compile Include="Paths\Toxion\Ability_PsychicGreyGoo.cs" />
     <Compile Include="Paths\Toxion\Ability_Unpollute.cs" />
+    <Compile Include="Paths\Toxion\HediffComp_DamageWhenMove.cs" />
     <Compile Include="Paths\Toxion\HediffComp_DoDamageInRadius.cs" />
     <Compile Include="Paths\Toxion\HediffComp_GreyGoo.cs" />
     <Compile Include="Paths\Toxion\HediffComp_PolluteRadius.cs" />

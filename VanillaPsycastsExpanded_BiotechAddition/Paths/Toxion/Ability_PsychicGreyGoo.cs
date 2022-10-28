@@ -11,6 +11,7 @@ namespace VanillaPsycastsExpanded_BiotechAddition
     {
         private float radius;
         private float secondradius;
+        private float adjusrSeverity = 0;
         public override void Cast(params GlobalTargetInfo[] targets)
         {
             base.Cast(targets);
@@ -35,15 +36,8 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                                         {
                                             List<BodyPartRecord> partSearch = victim.def.race.body.AllParts;
                                             int rndPart = Rand.Range(0, partSearch.Count);
-                                            victim.TakeDamage(new DamageInfo(DamageDefOf.Vaporize, 1000, 1, -1, pawn, partSearch[rndPart]));
-                                            if (!pawn.health.hediffSet.HasHediff(VPEBA_DefOf.VPEBA_GreyGoo))
-                                            {
-                                                pawn.health.AddHediff(VPEBA_DefOf.VPEBA_GreyGoo);
-                                            }
-                                            if (pawn.health.hediffSet.HasHediff(VPEBA_DefOf.VPEBA_GreyGoo))
-                                            {
-                                                pawn.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_GreyGoo).Severity += 0.01f;
-                                            }
+                                            victim.TakeDamage(new DamageInfo(DamageDefOf.Vaporize, 100, 1, -1, pawn, partSearch[rndPart]));
+                                            adjusrSeverity += 0.01f;
                                             curtarget = victim.Position;
                                             IEnumerable<IntVec3> applyPolluteCell = GenRadial.RadialCellsAround(curtarget, secondradius, true);
                                             foreach(IntVec3 polluteCell in applyPolluteCell)
@@ -61,14 +55,7 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                                 {
                                     int percentageDamage = affected.HitPoints / 4;
                                     affected.TakeDamage(new DamageInfo(DamageDefOf.Vaporize, percentageDamage, 1, -1, pawn));
-                                    if (!pawn.health.hediffSet.HasHediff(VPEBA_DefOf.VPEBA_GreyGoo))
-                                    {
-                                        pawn.health.AddHediff(VPEBA_DefOf.VPEBA_GreyGoo);
-                                    }
-                                    if (pawn.health.hediffSet.HasHediff(VPEBA_DefOf.VPEBA_GreyGoo))
-                                    {
-                                        pawn.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_GreyGoo).Severity += 0.01f;
-                                    }
+                                    adjusrSeverity += 0.01f;
                                     curtarget = affected.Position;
                                     IEnumerable<IntVec3> applyPolluteCell = GenRadial.RadialCellsAround(curtarget, secondradius, true);
                                     foreach (IntVec3 polluteCell in applyPolluteCell)
@@ -83,6 +70,16 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                             }
                         }
                     }
+                }
+                if (!pawn.health.hediffSet.HasHediff(VPEBA_DefOf.VPEBA_GreyGoo))
+                {
+                    Hediff hediff = HediffMaker.MakeHediff(VPEBA_DefOf.VPEBA_GreyGoo, this.pawn, null);
+                    hediff.Severity = adjusrSeverity;
+                    pawn.health.AddHediff(hediff, pawn.health.hediffSet.GetBrain());
+                }
+                if (pawn.health.hediffSet.HasHediff(VPEBA_DefOf.VPEBA_GreyGoo))
+                {
+                    HealthUtility.AdjustSeverity(pawn, VPEBA_DefOf.VPEBA_GreyGoo, adjusrSeverity);
                 }
             }
         }
