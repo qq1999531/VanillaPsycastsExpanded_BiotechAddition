@@ -24,7 +24,7 @@ namespace VanillaPsycastsExpanded_BiotechAddition
             age++;
             if (age < duration)
             {
-                float power = 3 * this.ability.GetPowerForPawn();
+                float power = this.ability.GetPowerForPawn();
                 Pawn caster = this.launcher as Pawn;
                 if (caster != null && !initialized)
                 {

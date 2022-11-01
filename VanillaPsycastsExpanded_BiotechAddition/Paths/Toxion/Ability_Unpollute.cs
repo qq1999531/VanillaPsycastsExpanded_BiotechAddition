@@ -8,7 +8,7 @@ namespace VanillaPsycastsExpanded_BiotechAddition
     class Ability_Unpollute : Ability
     {
         private float radius;
-        private float adjusrSeverity = 0;
+        private float adjustSeverity = 0;
         public override void Cast(params GlobalTargetInfo[] targets)
         {
             base.Cast(targets);
@@ -23,19 +23,19 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                         if (intVec.IsPolluted(target.Map) && intVec.CanUnpollute(target.Map))
                         {
                             intVec.Unpollute(target.Map);
-                            adjusrSeverity += 0.01f;
+                            adjustSeverity += 1f;
                         }
                     }
                 }
                 if (!pawn.health.hediffSet.HasHediff(VPEBA_DefOf.VPEBA_PollutionAccumulation))
                 {
                     Hediff hediff = HediffMaker.MakeHediff(VPEBA_DefOf.VPEBA_PollutionAccumulation, this.pawn, null);
-                    hediff.Severity = adjusrSeverity;
+                    hediff.Severity = adjustSeverity;
                     pawn.health.AddHediff(hediff, pawn.health.hediffSet.GetBrain());
                 }
                 if (pawn.health.hediffSet.HasHediff(VPEBA_DefOf.VPEBA_PollutionAccumulation))
                 {
-                    pawn.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_PollutionAccumulation).Severity += adjusrSeverity;
+                    HealthUtility.AdjustSeverity(pawn, VPEBA_DefOf.VPEBA_PollutionAccumulation, adjustSeverity);
                 }
             }
         }

@@ -68,6 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HarmonyPatch\PsycasterPathPatch.cs" />
+    <Compile Include="Paths\Psymech\Ability_ApplyDegradeToControlledMech.cs" />
+    <Compile Include="Paths\Psymech\Ability_ApplyEmpowerToControlledMech.cs" />
     <Compile Include="Paths\Toxion\AbilityExtension_Pollute.cs" />
     <Compile Include="Paths\Toxion\AbilityExtension_Radius.cs" />
     <Compile Include="Paths\Toxion\AbilityExtension_Unpollute.cs" />

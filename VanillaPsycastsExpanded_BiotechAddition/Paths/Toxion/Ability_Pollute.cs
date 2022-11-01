@@ -28,7 +28,7 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                             target.Map.effecterMaintainer.AddEffecterToMaintain(EffecterDefOf.CellPollution.Spawn(intVec, target.Map, Vector3.zero, 1f), intVec, 45);
                             if (pawn.health.hediffSet.HasHediff(VPEBA_DefOf.VPEBA_PollutionAccumulation))
                             {
-                                pawn.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_PollutionAccumulation).Heal(0.01f);
+                                pawn.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_PollutionAccumulation).Heal(1f);
                             }
                         }
                     }

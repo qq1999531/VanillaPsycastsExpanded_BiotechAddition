@@ -23,7 +23,7 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                     {
                         if (Pawn.health.hediffSet.HasHediff(VPEBA_DefOf.VPEBA_PollutionAccumulation))
                         {
-                            Pawn.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_PollutionAccumulation).Heal(0.01f);
+                            Pawn.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_PollutionAccumulation).Heal(1f);
                             intVec.Pollute(Pawn.Map, false);
                             Pawn.Map.effecterMaintainer.AddEffecterToMaintain(EffecterDefOf.CellPollution.Spawn(intVec, Pawn.Map, Vector3.zero, 1f), intVec, 45);
                         }

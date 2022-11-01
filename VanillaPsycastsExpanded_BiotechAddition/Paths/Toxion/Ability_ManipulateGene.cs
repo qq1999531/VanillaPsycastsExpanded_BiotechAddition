@@ -18,7 +18,7 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                     if (target.Thing is Pawn targetPawn)
                     {
                         XenotypeDef template;
-                        float chance = Rand.Range(0.0f, 1.0f);
+                        float chance = Rand.Range(0.0f, 100.0f);
                         if (chance > pawn.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_PollutionAccumulation).Severity)
                         {
                                 template = VPEBA_DefOf.VPEBA_BadGeneTemplate;
@@ -48,7 +48,7 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                 if (!target.genes.HasGene(targetgene))
                 {
                     target.genes.AddGene(targetgene, isXenoGene);
-                    caster.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_PollutionAccumulation).Heal(1);
+                    caster.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_PollutionAccumulation).Heal(100);
                     return;
                 }
             }

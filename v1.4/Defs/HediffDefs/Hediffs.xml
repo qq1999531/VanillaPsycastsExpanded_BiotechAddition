@@ -78,11 +78,39 @@
     </stages>
   </HediffDef>
   <HediffDef>
+    <defName>VPEBA_MechlinkEmpower</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Mechlink Empower</label>
+	<description>Mechlink Empower.</description>
+    <initialSeverity>1</initialSeverity>
+    <stages>
+            <li>
+                <statFactors>
+					<MechRepairSpeed>2</MechRepairSpeed>
+                </statFactors>
+            </li>	  
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>VPEBA_MechlinkDegrade</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Mechlink Degrade</label>
+	<description>Mechlink Degrade.</description>
+    <initialSeverity>1</initialSeverity>
+    <stages>
+            <li>
+                <statFactors>
+					<MechRepairSpeed>0.5</MechRepairSpeed>
+                </statFactors>
+            </li>	  
+    </stages>
+  </HediffDef>
+  <HediffDef>
     <defName>VPEBA_GreyGoo</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Grey Goo</label>
 	<description>Grey Goo heal the pawn.</description>
-    <initialSeverity>0.01</initialSeverity>
+    <initialSeverity>1</initialSeverity>
 	<comps>
 	  <li Class="HediffCompProperties">
 		<compClass>VanillaPsycastsExpanded_BiotechAddition.HediffComp_GreyGoo</compClass>

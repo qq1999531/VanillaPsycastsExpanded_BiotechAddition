@@ -17,6 +17,10 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                     return true;
             return false;
         }
-        public bool PawnIsXeno(Pawn pawn) => pawn.genes?.Xenotype == requiredXenotype;
+        public bool PawnIsXeno(Pawn pawn)
+        {
+            if(requiredXenotype == null) { return true; }
+            else { return pawn.genes?.Xenotype == requiredXenotype; }
+        }
     }
 }
