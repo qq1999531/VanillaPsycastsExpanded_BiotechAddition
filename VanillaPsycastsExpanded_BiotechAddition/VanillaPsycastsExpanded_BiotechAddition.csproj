@@ -70,9 +70,8 @@
     <Compile Include="HarmonyPatch\PsycasterPathPatch.cs" />
     <Compile Include="Paths\Psymech\Ability_ApplyDegradeToControlledMech.cs" />
     <Compile Include="Paths\Psymech\Ability_ApplyEmpowerToControlledMech.cs" />
-    <Compile Include="Paths\Toxion\AbilityExtension_Pollute.cs" />
+    <Compile Include="Paths\Psymech\Ability_MechExplode.cs" />
     <Compile Include="Paths\Toxion\AbilityExtension_Radius.cs" />
-    <Compile Include="Paths\Toxion\AbilityExtension_Unpollute.cs" />
     <Compile Include="Paths\Toxion\Ability_ManipulateGene.cs" />
     <Compile Include="Paths\Toxion\Ability_Pollute.cs" />
     <Compile Include="Paths\Toxion\Ability_PsychicGreyGoo.cs" />
@@ -82,7 +81,6 @@
     <Compile Include="Paths\Toxion\HediffComp_GreyGoo.cs" />
     <Compile Include="Paths\Toxion\HediffComp_PolluteRadius.cs" />
     <Compile Include="Paths\Toxion\PollutionRain.cs" />
-    <Compile Include="Paths\Toxion\Projectile_Poison.cs" />
     <Compile Include="Paths\Toxion\Projectile_ToxExplosive.cs" />
     <Compile Include="Paths\Toxion\WeatherOverlay_PolluteEffects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

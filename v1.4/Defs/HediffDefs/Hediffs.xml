@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
-	<HediffDef Name="VPEBA_InjuryBase" Abstract="True">
-		<hediffClass>Hediff_Injury</hediffClass>
-		<tendable>true</tendable>
-		<displayWound>true</displayWound>
-		<labelNounPretty>{0} in the {1}</labelNounPretty>
-    </HediffDef>
 	<HediffDef>
     <defName>VPEBA_Slow</defName>
 	<hediffClass>HediffWithComps</hediffClass>
@@ -123,30 +117,6 @@
                 </statFactors>
             </li>	  
     </stages>
-  </HediffDef>
-  <HediffDef ParentName="VPEBA_InjuryBase">  
-    <defName>VPEBA_Poison</defName>
-    <label>Poison</label>
-	<description>Damage caused by poison.</description>
-    <displayWound>true</displayWound>
-    <comps>
-      <li Class="HediffCompProperties_TendDuration">
-        <labelTendedWell>bandaged</labelTendedWell>
-        <labelTendedWellInner>sutured</labelTendedWellInner>
-        <labelSolidTendedWell>set</labelSolidTendedWell>
-      </li>
-      <li Class="HediffCompProperties_GetsPermanent">
-        <permanentLabel>withered away</permanentLabel>
-      </li>
-    </comps>
-	<injuryProps>
-		<painPerSeverity>0.025</painPerSeverity>
-		<averagePainPerSeverityPermanent>0.00625</averagePainPerSeverityPermanent>
-		<bleedRate>0.0</bleedRate>
-		<canMerge>true</canMerge>
-			<destroyedLabel>withered</destroyedLabel>
-			<destroyedOutLabel>withered</destroyedOutLabel>
-	</injuryProps>
   </HediffDef>
 	<HediffDef ParentName="PsycastHediffBase">
         <defName>VPEBA_FogofToxin</defName>

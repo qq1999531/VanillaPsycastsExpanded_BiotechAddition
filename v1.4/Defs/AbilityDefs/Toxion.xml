@@ -6,7 +6,7 @@
       <description>Creates a fog that causes pain and suffering to every living creature within.</description>
       <iconPath>UI/fogoftorment</iconPath>
       <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
-      <range>10</range>
+      <range>2</range>
       <targetMode>Self</targetMode>
       <targetingParameters>
         <canTargetPawns>true</canTargetPawns>
@@ -196,9 +196,10 @@
       <label>Poison</label>
       <iconPath>UI/poison</iconPath>
       <description>Fast acting toxin that works its way into the targets bloodstream. The more a target moves, the more lethal the poison becomes. Poison is ineffective against mechanoids.</description>
-	  <abilityClass>VFECore.Abilities.Ability_ShootProjectile</abilityClass>
+	  <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
       <castTime>60</castTime>
 	  <cooldownTime>1200</cooldownTime>
+      <durationTime>1800</durationTime>
       <range>40</range>
 	  <targetingParameters>
           <canTargetPawns>true</canTargetPawns>
@@ -224,8 +225,10 @@
 			<li>VPEBA_Unpollute</li>
           </prerequisites>
         </li>
-        <li Class="VFECore.Abilities.AbilityExtension_Projectile">
-          <projectile>VPEBA_Projectile_Poison</projectile>
+        <li Class="VFECore.Abilities.AbilityExtension_Hediff">
+		  <durationMultiplier>PsychicSensitivity</durationMultiplier>
+		  <durationMultiplierFromCaster>true</durationMultiplierFromCaster>
+          <projectile>VPEBA_Poisoned</projectile>
         </li>
       </modExtensions>
     </VFECore.Abilities.AbilityDef>

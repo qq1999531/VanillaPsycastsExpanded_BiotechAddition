@@ -18,20 +18,4 @@
 			<postExplosionSpawnChance>1</postExplosionSpawnChance>
         </projectile>
     </ThingDef>
-    <ThingDef ParentName="BaseBullet">
-		<thingClass>VanillaPsycastsExpanded_BiotechAddition.Projectile_Poison</thingClass>
-	    <defName>VPEBA_Projectile_Poison</defName>
-        <label>poison</label>
-        <graphicData>
-			<texPath>Spells/invis</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>TransparentPostLight</shaderType>
-        </graphicData>
-        <projectile>
-			<flyOverhead>true</flyOverhead>
-            <damageDef>VPEBA_Poison</damageDef>
-            <damageAmountBase>0</damageAmountBase>
-            <speed>900</speed>
-        </projectile>
-    </ThingDef>
 </Defs>
