@@ -1,30 +1,21 @@
-﻿using System.Linq;
-using RimWorld;
+﻿using RimWorld;
 using Verse;
 using RimWorld.Planet;
 using Ability = VFECore.Abilities.Ability;
 
 namespace VanillaPsycastsExpanded_BiotechAddition
 {
-    class Ability_MechExplode : Ability
+    class Ability_AllMechExplode : Ability
     {
         public override void Cast(params GlobalTargetInfo[] targets)
         {
             base.Cast(targets);
             foreach (GlobalTargetInfo target in targets)
             {
-                if(target.Thing is Pawn pawn)
+                if (target.Thing is Pawn pawn)
                 {
-                    if (!pawn.mechanitor.ControlledPawns.NullOrEmpty())
+                    foreach(Pawn victim in pawn.mechanitor.ControlledPawns)
                     {
-                        int rndPart = Rand.Range(0, pawn.mechanitor.ControlledPawns.Count());
-                        Pawn victim = pawn.mechanitor.ControlledPawns[rndPart];
-                        victim.TakeDamage(new DamageInfo(DamageDefOf.Bomb, victim.MaxHitPoints, 1, -1, victim));
-                        GenExplosion.DoExplosion(victim.Position, victim.Map, 3, DamageDefOf.Bomb, victim, victim.MaxHitPoints / 2, 0);
-                    }
-                    if (pawn.RaceProps.IsMechanoid)
-                    {
-                        Pawn victim = pawn;
                         victim.TakeDamage(new DamageInfo(DamageDefOf.Bomb, victim.MaxHitPoints, 1, -1, victim));
                         GenExplosion.DoExplosion(victim.Position, victim.Map, 3, DamageDefOf.Bomb, victim, victim.MaxHitPoints / 2, 0);
                     }
@@ -33,9 +24,9 @@ namespace VanillaPsycastsExpanded_BiotechAddition
         }
         public override bool ValidateTarget(LocalTargetInfo target, bool showMessages = true)
         {
-            if(target.HasThing && target.Thing is Pawn pawn)
+            if (target.HasThing && target.Thing is Pawn pawn)
             {
-                if(!pawn.mechanitor.ControlledPawns.NullOrEmpty() || pawn.RaceProps.IsMechanoid)
+                if (!pawn.mechanitor.ControlledPawns.NullOrEmpty())
                 {
                     return base.ValidateTarget(target, showMessages);
                 }

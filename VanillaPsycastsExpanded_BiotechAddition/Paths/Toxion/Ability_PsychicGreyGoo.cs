@@ -42,10 +42,13 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                                             IEnumerable<IntVec3> applyPolluteCell = GenRadial.RadialCellsAround(curtarget, secondradius, true);
                                             foreach(IntVec3 polluteCell in applyPolluteCell)
                                             {
-                                                if (!polluteCell.IsPolluted(victim.Map) && polluteCell.CanPollute(victim.Map))
+                                                if (polluteCell.IsValid)
                                                 {
-                                                    polluteCell.Pollute(victim.Map, false);
-                                                    victim.Map.effecterMaintainer.AddEffecterToMaintain(EffecterDefOf.CellPollution.Spawn(polluteCell, victim.Map, Vector3.zero, 1f), polluteCell, 45);
+                                                    if (!polluteCell.IsPolluted(victim.Map) && polluteCell.CanPollute(victim.Map))
+                                                    {
+                                                        polluteCell.Pollute(victim.Map, false);
+                                                        victim.Map.effecterMaintainer.AddEffecterToMaintain(EffecterDefOf.CellPollution.Spawn(polluteCell, victim.Map, Vector3.zero, 1f), polluteCell, 45);
+                                                    }
                                                 }
                                             }
                                         }
@@ -60,10 +63,13 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                                     IEnumerable<IntVec3> applyPolluteCell = GenRadial.RadialCellsAround(curtarget, secondradius, true);
                                     foreach (IntVec3 polluteCell in applyPolluteCell)
                                     {
-                                        if (!polluteCell.IsPolluted(affected.Map) && polluteCell.CanPollute(affected.Map))
+                                        if (polluteCell.IsValid)
                                         {
-                                            polluteCell.Pollute(affected.Map, false);
-                                            affected.Map.effecterMaintainer.AddEffecterToMaintain(EffecterDefOf.CellPollution.Spawn(polluteCell, affected.Map, Vector3.zero, 1f), polluteCell, 45);
+                                            if (!polluteCell.IsPolluted(affected.Map) && polluteCell.CanPollute(affected.Map))
+                                            {
+                                                polluteCell.Pollute(affected.Map, false);
+                                                affected.Map.effecterMaintainer.AddEffecterToMaintain(EffecterDefOf.CellPollution.Spawn(polluteCell, affected.Map, Vector3.zero, 1f), polluteCell, 45);
+                                            }
                                         }
                                     }
                                 }
