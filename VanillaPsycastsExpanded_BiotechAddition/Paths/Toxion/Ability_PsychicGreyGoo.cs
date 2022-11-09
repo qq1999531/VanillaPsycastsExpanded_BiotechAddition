@@ -39,10 +39,9 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                                             victim.TakeDamage(new DamageInfo(DamageDefOf.Vaporize, 100, 1, -1, pawn, partSearch[rndPart]));
                                             adjustSeverity += 1f;
                                             curtarget = victim.Position;
-                                            IEnumerable<IntVec3> applyPolluteCell = GenRadial.RadialCellsAround(curtarget, secondradius, true);
-                                            foreach(IntVec3 polluteCell in applyPolluteCell)
+                                            foreach(IntVec3 polluteCell in GenRadial.RadialCellsAround(curtarget, secondradius, true))
                                             {
-                                                if (polluteCell.IsValid)
+                                                if (affected.Map?.pollutionGrid.EverPollutable(polluteCell) ?? false)
                                                 {
                                                     if (!polluteCell.IsPolluted(victim.Map) && polluteCell.CanPollute(victim.Map))
                                                     {
@@ -60,10 +59,9 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                                     affected.TakeDamage(new DamageInfo(DamageDefOf.Vaporize, percentageDamage, 1, -1, pawn));
                                     adjustSeverity += 1f;
                                     curtarget = affected.Position;
-                                    IEnumerable<IntVec3> applyPolluteCell = GenRadial.RadialCellsAround(curtarget, secondradius, true);
-                                    foreach (IntVec3 polluteCell in applyPolluteCell)
+                                    foreach (IntVec3 polluteCell in GenRadial.RadialCellsAround(curtarget, secondradius, true))
                                     {
-                                        if (polluteCell.IsValid)
+                                        if (affected.Map?.pollutionGrid.EverPollutable(polluteCell) ?? false)
                                         {
                                             if (!polluteCell.IsPolluted(affected.Map) && polluteCell.CanPollute(affected.Map))
                                             {
@@ -88,6 +86,11 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                     HealthUtility.AdjustSeverity(pawn, VPEBA_DefOf.VPEBA_GreyGoo, adjustSeverity);
                 }
             }
+        }
+        public override bool ValidateTarget(LocalTargetInfo target, bool showMessages = true)
+        {
+            bool check = target.Cell.IsValid;
+            return check && base.ValidateTarget(target, showMessages);
         }
     }
 }

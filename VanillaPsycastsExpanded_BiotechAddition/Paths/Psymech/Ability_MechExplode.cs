@@ -17,8 +17,7 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                 {
                     if (!pawn.mechanitor.ControlledPawns.NullOrEmpty())
                     {
-                        int rndPart = Rand.Range(0, pawn.mechanitor.ControlledPawns.Count());
-                        Pawn victim = pawn.mechanitor.ControlledPawns[rndPart];
+                        Pawn victim = pawn.mechanitor.ControlledPawns.RandomElement();
                         victim.TakeDamage(new DamageInfo(DamageDefOf.Bomb, victim.MaxHitPoints, 1, -1, victim));
                         GenExplosion.DoExplosion(victim.Position, victim.Map, 3, DamageDefOf.Bomb, victim, victim.MaxHitPoints / 2, 0);
                     }

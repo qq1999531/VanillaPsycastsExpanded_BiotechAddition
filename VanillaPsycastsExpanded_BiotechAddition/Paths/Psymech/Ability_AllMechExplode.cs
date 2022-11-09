@@ -24,12 +24,9 @@ namespace VanillaPsycastsExpanded_BiotechAddition
         }
         public override bool ValidateTarget(LocalTargetInfo target, bool showMessages = true)
         {
-            if (target.HasThing && target.Thing is Pawn pawn)
+            if (target.HasThing && target.Thing is Pawn pawn && !pawn.mechanitor.ControlledPawns.NullOrEmpty())
             {
-                if (!pawn.mechanitor.ControlledPawns.NullOrEmpty())
-                {
                     return base.ValidateTarget(target, showMessages);
-                }
             }
             return false;
         }

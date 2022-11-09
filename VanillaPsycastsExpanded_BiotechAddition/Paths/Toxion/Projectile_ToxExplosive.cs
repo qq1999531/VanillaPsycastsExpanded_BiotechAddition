@@ -36,9 +36,8 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                         for (int i = 0; i < pList.Count(); i++)
                         {
                             Pawn victim = pList[i];
-                            List<BodyPartRecord> bprList = new List<BodyPartRecord>();
+                            List<BodyPartRecord> bprList = new();
                             bprList.Clear();
-                            BodyPartRecord bpr = null;
                             foreach (BodyPartRecord record in victim.def.race.body.AllParts)
                             {
                                 if (record.def.tags.Contains(BodyPartTagDefOf.BreathingSource) || record.def.tags.Contains(BodyPartTagDefOf.BreathingPathway))
@@ -49,7 +48,7 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                                     }
                                 }
                             }
-                            if (bprList != null && bprList.Count > 0 && caster != null)
+                            if (bprList != null && bprList.Count > 0 && caster != null && hitThing != null)
                             {
                                 float amt = Rand.Range(1f, 2f);
                                 amt = Rand.Range(amt * .75f, amt * 1.25f);
