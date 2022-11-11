@@ -27,8 +27,9 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                         IEnumerable<IntVec3> applyCell = GenRadial.RadialCellsAround(target.Cell, radius, true);
                         foreach(IntVec3 curCell in applyCell)
                         {
-                            foreach (Thing affected in curCell.GetThingList(target.Map))
+                            for(int i =0;i< curCell.GetThingList(target.Map).Count; i++)
                             {
+                                Thing affected = curCell.GetThingList(target.Map)[i];
                                 if (affected is Pawn victim)
                                 {
                                     if (victim != null && !victim.Dead && victim != pawn)
@@ -36,10 +37,9 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                                         {
                                             List<BodyPartRecord> partSearch = victim.def.race.body.AllParts;
                                             int rndPart = Rand.Range(0, partSearch.Count);
-                                            victim.TakeDamage(new DamageInfo(DamageDefOf.Vaporize, 100, 1, -1, pawn, partSearch[rndPart]));
                                             adjustSeverity += 1f;
                                             curtarget = victim.Position;
-                                            foreach(IntVec3 polluteCell in GenRadial.RadialCellsAround(curtarget, secondradius, true))
+                                            foreach (IntVec3 polluteCell in GenRadial.RadialCellsAround(curtarget, secondradius, true))
                                             {
                                                 if (affected.Map?.pollutionGrid.EverPollutable(polluteCell) ?? false)
                                                 {
@@ -50,25 +50,29 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                                                     }
                                                 }
                                             }
+                                            victim.TakeDamage(new DamageInfo(DamageDefOf.Vaporize, 100, 1, -1, pawn, partSearch[rndPart]));
                                         }
                                     }
                                 }
                                 else
                                 {
-                                    int percentageDamage = affected.HitPoints / 4;
-                                    affected.TakeDamage(new DamageInfo(DamageDefOf.Vaporize, percentageDamage, 1, -1, pawn));
-                                    adjustSeverity += 1f;
-                                    curtarget = affected.Position;
-                                    foreach (IntVec3 polluteCell in GenRadial.RadialCellsAround(curtarget, secondradius, true))
+                                    if (affected != null)
                                     {
-                                        if (affected.Map?.pollutionGrid.EverPollutable(polluteCell) ?? false)
+                                        curtarget = affected.Position;
+                                        int percentageDamage = affected.MaxHitPoints / 4;
+                                        adjustSeverity += 1f;
+                                        foreach (IntVec3 polluteCell in GenRadial.RadialCellsAround(curtarget, secondradius, true))
                                         {
-                                            if (!polluteCell.IsPolluted(affected.Map) && polluteCell.CanPollute(affected.Map))
+                                            if (affected.Map?.pollutionGrid.EverPollutable(polluteCell) ?? false)
                                             {
-                                                polluteCell.Pollute(affected.Map, false);
-                                                affected.Map.effecterMaintainer.AddEffecterToMaintain(EffecterDefOf.CellPollution.Spawn(polluteCell, affected.Map, Vector3.zero, 1f), polluteCell, 45);
+                                                if (!polluteCell.IsPolluted(affected.Map) && polluteCell.CanPollute(affected.Map))
+                                                {
+                                                    polluteCell.Pollute(affected.Map, false);
+                                                    affected.Map.effecterMaintainer.AddEffecterToMaintain(EffecterDefOf.CellPollution.Spawn(polluteCell, affected.Map, Vector3.zero, 1f), polluteCell, 45);
+                                                }
                                             }
                                         }
+                                        affected.TakeDamage(new DamageInfo(DamageDefOf.Vaporize, percentageDamage, 1, -1, pawn));
                                     }
                                 }
                             }
@@ -77,7 +81,7 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                 }
                 if (!pawn.health.hediffSet.HasHediff(VPEBA_DefOf.VPEBA_GreyGoo))
                 {
-                    Hediff hediff = HediffMaker.MakeHediff(VPEBA_DefOf.VPEBA_GreyGoo, this.pawn, null);
+                    Hediff hediff = HediffMaker.MakeHediff(VPEBA_DefOf.VPEBA_GreyGoo, pawn, null);
                     hediff.Severity = adjustSeverity;
                     pawn.health.AddHediff(hediff, pawn.health.hediffSet.GetBrain());
                 }
