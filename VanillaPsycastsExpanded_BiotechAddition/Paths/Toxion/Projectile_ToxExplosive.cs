@@ -29,33 +29,6 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                     fog.gas.expireSeconds.max = duration / 60;
                     GenExplosion.DoExplosion(base.Position, map, radius, def.projectile.damageDef, this, 0, 0, SoundDef.Named("TinyBell"), def, null, null, fog, 1f, 1,GasType.ToxGas, false, null, 0f, 0, 0.0f, false);
                 }
-                        List<Pawn> pList = (from pawn in Map.mapPawns.AllPawnsSpawned
-                                            where (!pawn.Dead && (pawn.Position - base.Position).LengthHorizontal <= radius && pawn.RaceProps != null && pawn.RaceProps.IsFlesh)
-                                            select pawn).ToList();
-
-                        for (int i = 0; i < pList.Count(); i++)
-                        {
-                            Pawn victim = pList[i];
-                            List<BodyPartRecord> bprList = new();
-                            bprList.Clear();
-                            foreach (BodyPartRecord record in victim.def.race.body.AllParts)
-                            {
-                                if (record.def.tags.Contains(BodyPartTagDefOf.BreathingSource) || record.def.tags.Contains(BodyPartTagDefOf.BreathingPathway))
-                                {
-                                    if (victim.health != null && victim.health.hediffSet != null && !victim.health.hediffSet.PartIsMissing(record))
-                                    {
-                                        bprList.Add(record);
-                                    }
-                                }
-                            }
-                            if (bprList != null && bprList.Count > 0 && caster != null)
-                            {
-                                float amt = Rand.Range(1f, 2f);
-                                amt = Rand.Range(amt * .75f, amt * 1.25f);
-                                DamageInfo dinfo = new(this.def.projectile.damageDef, amt, 2f, -1, launcher, bprList.RandomElement(), equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);
-                                victim.TakeDamage(dinfo);
-                            }
-                        }
         }
     }
 }
