@@ -81,6 +81,7 @@
     <Compile Include="Paths\Toxion\HediffComp_DoDamageInRadius.cs" />
     <Compile Include="Paths\Toxion\HediffComp_GreyGoo.cs" />
     <Compile Include="Paths\Toxion\HediffComp_PolluteRadius.cs" />
+    <Compile Include="Paths\Toxion\HediffComp_PolluteWhenOverCapacity.cs" />
     <Compile Include="Paths\Toxion\PollutionRain.cs" />
     <Compile Include="Paths\Toxion\Projectile_ToxExplosive.cs" />
     <Compile Include="Paths\Toxion\WeatherOverlay_PolluteEffects.cs" />

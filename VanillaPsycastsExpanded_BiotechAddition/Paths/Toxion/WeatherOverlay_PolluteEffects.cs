@@ -131,11 +131,16 @@ namespace VanillaPsycastsExpanded_BiotechAddition
         public void DoPollute(WeatherEffectsExtension options, Map map)
         {
             int targetCell = Rand.Range(0,map.AllCells.Count());
-            List<IntVec3> Celllist = (List<IntVec3>)map.AllCells;
-            if(Celllist[targetCell].CanPollute(map) && !Celllist[targetCell].IsPolluted(map) && Celllist[targetCell].Roofed(map))
+            int count = 0;
+            foreach(IntVec3 currentCell in map.AllCells)
             {
-                Celllist[targetCell].Pollute(map);
-                map.effecterMaintainer.AddEffecterToMaintain(EffecterDefOf.CellPollution.Spawn(Celllist[targetCell], map, Vector3.zero, 1f), Celllist[targetCell], 45);
+                if(count == targetCell)
+                {
+                    currentCell.Pollute(map);
+                    map.effecterMaintainer.AddEffecterToMaintain(EffecterDefOf.CellPollution.Spawn(currentCell, map, Vector3.zero, 1f), currentCell, 45);
+                    break;
+                }
+                count++;
             }
         }
     }

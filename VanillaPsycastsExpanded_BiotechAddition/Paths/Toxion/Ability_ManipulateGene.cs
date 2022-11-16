@@ -18,13 +18,25 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                     if (target.Thing is Pawn targetPawn)
                     {
                         float chance = Rand.Range(0.0f, 100.0f);
+                        float chance2 = Rand.Range(0.0f, 100.0f);
                         if (chance > pawn.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_PollutionAccumulation).Severity)
                         {
+                            
+                            if (chance2 > pawn.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_PollutionAccumulation).Severity)
+                            {
+                                AddRandomGene(VPEBA_DefOf.VPEBA_WorseGeneTemplate, targetPawn, false, pawn);
+                                break;
+                            }
                                 AddRandomGene(VPEBA_DefOf.VPEBA_BadGeneTemplate, targetPawn, false, pawn);
                         }
                         else
                         {
-                            AddRandomGene(VPEBA_DefOf.VPEBA_GoodGeneTemplate, targetPawn, false, pawn);
+                            if (chance2 > pawn.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_PollutionAccumulation).Severity)
+                            {
+                                AddRandomGene(VPEBA_DefOf.VPEBA_GoodGeneTemplate, targetPawn, false, pawn);
+                                break;
+                            }
+                            AddRandomGene(VPEBA_DefOf.VPEBA_BetterGeneTemplate, targetPawn, false, pawn);
                         }
                     }
                 }
@@ -39,6 +51,7 @@ namespace VanillaPsycastsExpanded_BiotechAddition
         public void AddRandomGene(XenotypeDef template, Pawn target,bool isXenoGene,Pawn caster)
         {
             List<GeneDef> Genelist = template.AllGenes;
+            Genelist.Shuffle();
             foreach (GeneDef targetgene in Genelist)
             {
                 if (!target.genes.HasGene(targetgene))
