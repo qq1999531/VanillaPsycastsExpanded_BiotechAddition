@@ -303,7 +303,7 @@
         <canTargetBuildings>false</canTargetBuildings>
       </targetingParameters>
       <castTime>15</castTime>
-      <durationTime>1200</durationTime>
+      <cooldownTime>216000</cooldownTime>
       <castSound>VPE_FireShield_Cast</castSound>
 	  <showUndrafted>true</showUndrafted>
       <modExtensions>
