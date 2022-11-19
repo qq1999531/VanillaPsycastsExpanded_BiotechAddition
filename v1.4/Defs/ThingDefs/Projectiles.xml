@@ -14,7 +14,7 @@
             <damageDef>VPEBA_AcidBurn</damageDef>
             <damageAmountBase>4</damageAmountBase>
             <speed>20</speed>
-			<explosionRadius>4</explosionRadius>
+			<explosionRadius>3</explosionRadius>
 			<postExplosionSpawnChance>1</postExplosionSpawnChance>
         </projectile>
     </ThingDef>

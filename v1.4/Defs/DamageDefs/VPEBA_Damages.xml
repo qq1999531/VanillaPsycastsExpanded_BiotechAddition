@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+	<DamageDef Name="VPEBA_LocalInjuryBase" Abstract="True">
+		<workerClass>DamageWorker_AddInjury</workerClass>
+		<defaultArmorPenetration>1</defaultArmorPenetration>
+	</DamageDef>
+	<DamageDef ParentName="VPEBA_LocalInjuryBase">
+		<defName>VPEBA_Poison</defName>
+		<label>Poison</label>
+		<externalViolence>true</externalViolence>
+		<canInterruptJobs>false</canInterruptJobs>
+		<makesBlood>false</makesBlood>
+		<hasForcefulImpact>false</hasForcefulImpact>
+		<deathMessage>{0} succumbed to poison.</deathMessage>
+		<hediff>VPEBA_Poison</hediff>
+		<hediffSkin>VPEBA_Poison</hediffSkin>
+		<hediffSolid>VPEBA_Poison</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<isExplosive>false</isExplosive>
+		<impactSoundType>Bullet</impactSoundType>
+		<additionalHediffs>
+			<li>
+				<hediff>VPEBA_Slow</hediff>
+				<severityPerDamageDealt>.1</severityPerDamageDealt>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
 	<DamageDef ParentName="Flame">
 		<workerClass>DamageWorker_AddInjury</workerClass>
 		<defaultArmorPenetration>1</defaultArmorPenetration>

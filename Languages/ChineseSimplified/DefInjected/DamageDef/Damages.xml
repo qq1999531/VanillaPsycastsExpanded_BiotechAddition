@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <VPEBA_Poison.label>中毒</VPEBA_Poison.label>
+  <VPEBA_Poison.deathMessage>{0}中毒身亡。</VPEBA_Poison.deathMessage>
+  
+  <VPEBA_AcidBurn.label>酸灼伤</VPEBA_AcidBurn.label>
+  <VPEBA_AcidBurn.deathMessage>{0}酸蚀而亡。</VPEBA_AcidBurn.deathMessage>
+  
+</LanguageData>

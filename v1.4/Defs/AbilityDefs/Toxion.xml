@@ -44,6 +44,7 @@
       <iconPath>UI/fogoftorment</iconPath>
       <abilityClass>VanillaPsycastsExpanded_BiotechAddition.Ability_Pollute</abilityClass>
       <range>50</range>
+          <radius>3</radius>
       <targetMode>Location</targetMode>
       <castTime>60</castTime>
       <castSound>VPE_FireShield_Cast</castSound>
@@ -60,7 +61,7 @@
           </prerequisites>
         </li>
 		<li Class="VanillaPsycastsExpanded_BiotechAddition.AbilityExtension_Radius">
-          <radius>10</radius>
+          <radius>3</radius>
         </li>
       </modExtensions>
     </VFECore.Abilities.AbilityDef>
@@ -71,6 +72,7 @@
       <iconPath>UI/fogoftorment</iconPath>
       <abilityClass>VanillaPsycastsExpanded_BiotechAddition.Ability_Unpollute</abilityClass>
       <range>50</range>
+          <radius>3</radius>
       <targetMode>Location</targetMode>
       <castTime>60</castTime>
       <castSound>VPE_FireShield_Cast</castSound>
@@ -84,7 +86,7 @@
           <entropyGain>12</entropyGain>
         </li>
 		<li Class="VanillaPsycastsExpanded_BiotechAddition.AbilityExtension_Radius">
-          <radius>10</radius>
+          <radius>3</radius>
         </li>
       </modExtensions>
     </VFECore.Abilities.AbilityDef>
@@ -132,6 +134,7 @@
       <iconPath>UI/fogoftorment</iconPath>
       <abilityClass>VanillaPsycastsExpanded_BiotechAddition.Ability_PsychicGreyGoo</abilityClass>
       <range>50</range>
+	  <radius>3</radius>
       <targetMode>Location</targetMode>
       <castTime>60</castTime>
       <castSound>VPE_FireShield_Cast</castSound>
@@ -148,8 +151,8 @@
           </prerequisites>
         </li>
 		<li Class="VanillaPsycastsExpanded_BiotechAddition.AbilityExtension_Radius">
-          <radius>10</radius>
-		  <secondradius>5</secondradius>
+          <radius>3</radius>
+		  <secondradius>2</secondradius>
         </li>
       </modExtensions>
     </VFECore.Abilities.AbilityDef>
@@ -228,7 +231,7 @@
         <li Class="VFECore.Abilities.AbilityExtension_Hediff">
 		  <durationMultiplier>PsychicSensitivity</durationMultiplier>
 		  <durationMultiplierFromCaster>true</durationMultiplierFromCaster>
-          <projectile>VPEBA_Poisoned</projectile>
+          <hediff>VPEBA_Poisoned</hediff>
         </li>
       </modExtensions>
     </VFECore.Abilities.AbilityDef>

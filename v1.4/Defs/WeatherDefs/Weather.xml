@@ -5,64 +5,61 @@
 		<label>Pollution Rain</label>
 		<isBad>true</isBad>
 		<description>Pollution Rain.</description>
-		<temperatureRange>0~999</temperatureRange>
-		<windSpeedFactor>3</windSpeedFactor>
-		<windSpeedOffset>5</windSpeedOffset>
-		<favorability>Bad</favorability>
-		<perceivePriority>2</perceivePriority>
-		<exposedThought>SoakingWet</exposedThought>
+		<temperatureRange>0~100</temperatureRange>
+		<windSpeedFactor>1.5</windSpeedFactor>
 		<accuracyMultiplier>0.8</accuracyMultiplier>
-		<rainRate>5</rainRate>
-		<moveSpeedMultiplier>0.8</moveSpeedMultiplier>
+		<favorability>Neutral</favorability>
+		<perceivePriority>1</perceivePriority>
+		<exposedThought>SoakingWet</exposedThought>
+		<rainRate>1</rainRate>
+		<moveSpeedMultiplier>0.9</moveSpeedMultiplier>
 		<ambientSounds>
-			<li>VPE_Hurricane_Sustainer</li>
 			<li>Ambient_Rain</li>
 		</ambientSounds>
-		<eventMakers>
-			<li>
-				<averageInterval>1200</averageInterval>
-				<eventClass>WeatherEvent_LightningFlash</eventClass>
-			</li>
-			<li>
-				<averageInterval>1200</averageInterval>
-				<eventClass>WeatherEvent_LightningStrike</eventClass>
-			</li>
-		</eventMakers>
 		<overlayClasses>
+			<li>WeatherOverlay_Rain</li>
 			<li>VanillaPsycastsExpanded_BiotechAddition.WeatherOverlay_PolluteEffects</li>
 		</overlayClasses>
 		<commonalityRainfallFactor>
 			<points>
 				<li>(0, 0)</li>
-				<li>(10000, 0)</li>
+				<li>(1300, 1)</li>
+				<li>(4000, 3.0)</li>
 			</points>
 		</commonalityRainfallFactor>
 		<!-- Colors are Overcast -->
 		<skyColorsDay>
-			<sky>(0.7,0.7,0.7)</sky>
-			<shadow>(0.86,0.86,0.86)</shadow>
-			<overlay>(0.6,0.6,0.6)</overlay>
-			<saturation>0.84</saturation>
+			<sky>(0.8,0.8,0.8)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.7,0.7,0.7)</overlay>
+			<saturation>0.9</saturation>
 		</skyColorsDay>
 		<skyColorsDusk>
 			<sky>(1,1,1)</sky>
 			<shadow>(0.92,0.92,0.92)</shadow>
-			<overlay>(0.5,0.5,0.5)</overlay>
-			<saturation>0.83</saturation>
+			<overlay>(0.6,0.6,0.6)</overlay>
+			<saturation>0.9</saturation>
 		</skyColorsDusk>
 		<skyColorsNightEdge>
 			<sky>(0.35,0.40,0.45)</sky>
 			<shadow>(0.92,0.92,0.92)</shadow>
 			<overlay>(0.5,0.5,0.5)</overlay>
-			<saturation>0.83</saturation>
+			<saturation>0.9</saturation>
 		</skyColorsNightEdge>
 		<skyColorsNightMid>
 			<sky>(0.35,0.40,0.45)</sky>
 			<shadow>(0.92,0.92,0.92)</shadow>
 			<overlay>(0.5,0.5,0.5)</overlay>
-			<saturation>0.83</saturation>
+			<saturation>0.9</saturation>
 		</skyColorsNightMid>
 		<modExtensions>
+			<li Class="VFECore.WeatherEffectsExtension">
+				<ticksInterval>240</ticksInterval>
+				<causesRotting>true</causesRotting>
+				<rotProgressPerDamage>3000</rotProgressPerDamage>
+				<killsPlants>true</killsPlants>
+				<chanceToKillPlants>0.0065</chanceToKillPlants>
+			</li>
 			<li Class="VFECore.WeatherExtension">
 				<canRandomlyGenerate>false</canRandomlyGenerate>
 			</li>

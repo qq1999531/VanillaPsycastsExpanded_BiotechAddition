@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <VPEBA_Slow.label>老化病</VPEBA_Slow.label>
+  <VPEBA_Slow.description>降低身体和精神敏捷性的能力的效果。</VPEBA_Slow.description>
+  
+  <VPEBA_Poison.label>中毒</VPEBA_Poison.label>
+  <VPEBA_Poison.description>毒药造成的伤害。</VPEBA_Poison.description>
+  <VPEBA_Poison.labelNounPretty>{0}中的{1}</VPEBA_Poison.labelNounPretty>
+  
+  <VPEBA_GreyGoo.label>灵控灰蛊</VPEBA_GreyGoo.label>
+  <VPEBA_GreyGoo.description>灰蛊能提高恢复能力，瞬间治愈伤势。</VPEBA_GreyGoo.description>
+  
+  <VPEBA_FogofToxin.label>毒雾</VPEBA_FogofToxin.label>
+  <VPEBA_FogofToxin.description>你是毒雾的源头。</VPEBA_FogofToxin.description>
+  
+  <VPEBA_PollutionAccumulation.label>污染累积</VPEBA_PollutionAccumulation.label>
+  <VPEBA_PollutionAccumulation.description>污染在体内累积，对单位身心产生压力。</VPEBA_PollutionAccumulation.description>
+  
+  <VPEBA_PollutionAccumulation.label>污染累积</VPEBA_PollutionAccumulation.label>
+  <VPEBA_PollutionAccumulation.description>污染在体内累积，对单位身心产生压力。</VPEBA_PollutionAccumulation.description>
+  
+  <VPEBA_Poisoned.label>中毒</VPEBA_Poisoned.label>
+  <VPEBA_Poisoned.description>毒药副作用。</VPEBA_Poisoned.description>
+  
+  <VPEBA_ToxShield.label>毒气屏障</VPEBA_ToxShield.label>
+  <VPEBA_ToxShield.description>使单位免疫毒气。</VPEBA_ToxShield.description>
+</LanguageData>
