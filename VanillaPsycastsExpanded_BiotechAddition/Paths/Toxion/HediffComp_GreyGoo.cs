@@ -14,7 +14,7 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                     while (enumerator.MoveNext())
                     {
                         BodyPartRecord rec = enumerator.Current;
-                        List<Hediff_Injury> arg_BB_0 = null; ;
+                        List<Hediff_Injury> arg_BB_0 = new();
                         Pawn.health.hediffSet.GetHediffs(ref arg_BB_0);
                         foreach (Hediff_Injury current in arg_BB_0)
                         {

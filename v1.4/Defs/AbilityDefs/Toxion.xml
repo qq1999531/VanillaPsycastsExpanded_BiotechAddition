@@ -6,7 +6,7 @@
       <description>Creates a fog that causes pain and suffering to every living creature within.</description>
       <iconPath>UI/fogoftorment</iconPath>
       <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
-      <range>10</range>
+      <range>2</range>
       <targetMode>Self</targetMode>
       <targetingParameters>
         <canTargetPawns>true</canTargetPawns>
@@ -44,6 +44,7 @@
       <iconPath>UI/fogoftorment</iconPath>
       <abilityClass>VanillaPsycastsExpanded_BiotechAddition.Ability_Pollute</abilityClass>
       <range>50</range>
+          <radius>3</radius>
       <targetMode>Location</targetMode>
       <castTime>60</castTime>
       <castSound>VPE_FireShield_Cast</castSound>
@@ -60,7 +61,7 @@
           </prerequisites>
         </li>
 		<li Class="VanillaPsycastsExpanded_BiotechAddition.AbilityExtension_Radius">
-          <radius>10</radius>
+          <radius>3</radius>
         </li>
       </modExtensions>
     </VFECore.Abilities.AbilityDef>
@@ -71,6 +72,7 @@
       <iconPath>UI/fogoftorment</iconPath>
       <abilityClass>VanillaPsycastsExpanded_BiotechAddition.Ability_Unpollute</abilityClass>
       <range>50</range>
+          <radius>3</radius>
       <targetMode>Location</targetMode>
       <castTime>60</castTime>
       <castSound>VPE_FireShield_Cast</castSound>
@@ -84,7 +86,7 @@
           <entropyGain>12</entropyGain>
         </li>
 		<li Class="VanillaPsycastsExpanded_BiotechAddition.AbilityExtension_Radius">
-          <radius>10</radius>
+          <radius>3</radius>
         </li>
       </modExtensions>
     </VFECore.Abilities.AbilityDef>
@@ -132,6 +134,7 @@
       <iconPath>UI/fogoftorment</iconPath>
       <abilityClass>VanillaPsycastsExpanded_BiotechAddition.Ability_PsychicGreyGoo</abilityClass>
       <range>50</range>
+	  <radius>3</radius>
       <targetMode>Location</targetMode>
       <castTime>60</castTime>
       <castSound>VPE_FireShield_Cast</castSound>
@@ -148,8 +151,8 @@
           </prerequisites>
         </li>
 		<li Class="VanillaPsycastsExpanded_BiotechAddition.AbilityExtension_Radius">
-          <radius>10</radius>
-		  <secondradius>5</secondradius>
+          <radius>3</radius>
+		  <secondradius>2</secondradius>
         </li>
       </modExtensions>
     </VFECore.Abilities.AbilityDef>
@@ -196,9 +199,10 @@
       <label>Poison</label>
       <iconPath>UI/poison</iconPath>
       <description>Fast acting toxin that works its way into the targets bloodstream. The more a target moves, the more lethal the poison becomes. Poison is ineffective against mechanoids.</description>
-	  <abilityClass>VFECore.Abilities.Ability_ShootProjectile</abilityClass>
+	  <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
       <castTime>60</castTime>
 	  <cooldownTime>1200</cooldownTime>
+      <durationTime>1800</durationTime>
       <range>40</range>
 	  <targetingParameters>
           <canTargetPawns>true</canTargetPawns>
@@ -224,8 +228,10 @@
 			<li>VPEBA_Unpollute</li>
           </prerequisites>
         </li>
-        <li Class="VFECore.Abilities.AbilityExtension_Projectile">
-          <projectile>VPEBA_Projectile_Poison</projectile>
+        <li Class="VFECore.Abilities.AbilityExtension_Hediff">
+		  <durationMultiplier>PsychicSensitivity</durationMultiplier>
+		  <durationMultiplierFromCaster>true</durationMultiplierFromCaster>
+          <hediff>VPEBA_Poisoned</hediff>
         </li>
       </modExtensions>
     </VFECore.Abilities.AbilityDef>
@@ -297,7 +303,7 @@
         <canTargetBuildings>false</canTargetBuildings>
       </targetingParameters>
       <castTime>15</castTime>
-      <durationTime>1200</durationTime>
+      <cooldownTime>216000</cooldownTime>
       <castSound>VPE_FireShield_Cast</castSound>
 	  <showUndrafted>true</showUndrafted>
       <modExtensions>

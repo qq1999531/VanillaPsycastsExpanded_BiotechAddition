@@ -78,6 +78,34 @@
     </stages>
   </HediffDef>
   <HediffDef>
+    <defName>VPEBA_EmpowerMech</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Empower Mech</label>
+	<description>Empower Mech.</description>
+    <initialSeverity>1</initialSeverity>
+    <stages>
+            <li>
+                <statFactors>
+					<WorkSpeedGlobal>2</WorkSpeedGlobal>
+                </statFactors>
+            </li>	  
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>VPEBA_DegradeMech</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Degrade Mech</label>
+	<description>Degrade Mech.</description>
+    <initialSeverity>1</initialSeverity>
+    <stages>
+            <li>
+                <statFactors>
+					<WorkSpeedGlobal>0.5</WorkSpeedGlobal>
+                </statFactors>
+            </li>	  
+    </stages>
+  </HediffDef>
+  <HediffDef>
     <defName>VPEBA_MechlinkEmpower</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Mechlink Empower</label>
@@ -101,25 +129,6 @@
             <li>
                 <statFactors>
 					<MechRepairSpeed>0.5</MechRepairSpeed>
-                </statFactors>
-            </li>	  
-    </stages>
-  </HediffDef>
-  <HediffDef>
-    <defName>VPEBA_GreyGoo</defName>
-	<hediffClass>HediffWithComps</hediffClass>
-    <label>Grey Goo</label>
-	<description>Grey Goo heal the pawn.</description>
-    <initialSeverity>1</initialSeverity>
-	<comps>
-	  <li Class="HediffCompProperties">
-		<compClass>VanillaPsycastsExpanded_BiotechAddition.HediffComp_GreyGoo</compClass>
-	  </li>
-    </comps>
-    <stages>
-            <li>
-                <statFactors>
-					<InjuryHealingFactor>10</InjuryHealingFactor>
                 </statFactors>
             </li>	  
     </stages>
@@ -148,6 +157,25 @@
 			<destroyedOutLabel>withered</destroyedOutLabel>
 	</injuryProps>
   </HediffDef>
+  <HediffDef>
+    <defName>VPEBA_GreyGoo</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Grey Goo</label>
+	<description>Grey Goo heal the pawn.</description>
+    <initialSeverity>1</initialSeverity>
+	<comps>
+	  <li Class="HediffCompProperties">
+		<compClass>VanillaPsycastsExpanded_BiotechAddition.HediffComp_GreyGoo</compClass>
+	  </li>
+    </comps>
+    <stages>
+            <li>
+                <statFactors>
+					<InjuryHealingFactor>10</InjuryHealingFactor>
+                </statFactors>
+            </li>	  
+    </stages>
+  </HediffDef>
 	<HediffDef ParentName="PsycastHediffBase">
         <defName>VPEBA_FogofToxin</defName>
         <label>Fog of Toxin</label>
@@ -161,12 +189,12 @@
                 <damageAmount>3</damageAmount>
 				<tickInterval>60</tickInterval>
 				<armorPenetration>1</armorPenetration>
-				<radius>10</radius>
+				<radius>3</radius>
             </li>
 			<li Class="VanillaPsycastsExpanded_BiotechAddition.HediffCompProperties_PolluteRadius">
                 <compClass>VanillaPsycastsExpanded_BiotechAddition.HediffComp_PolluteRadius</compClass>
 				<tickInterval>60</tickInterval>
-				<radius>10</radius>
+				<radius>1</radius>
             </li>
 			<li Class="VanillaPsycastsExpanded.HediffCompProperties_DisappearsOnDespawn"/>
         </comps>
@@ -183,15 +211,118 @@
             </li>
         </stages>
     </HediffDef>
-	<HediffDef ParentName="PsycastHediffBase">
+	<HediffDef>
         <defName>VPEBA_PollutionAccumulation</defName>
+	<hediffClass>HediffWithComps</hediffClass>
         <label>Pollution Accumulation</label>
         <description>Pollution accumulat in your body</description>
+    <initialSeverity>1</initialSeverity>
         <comps>
 			<li Class="HediffCompProperties_SeverityPerDay">
-				<severityPerDay>0.25</severityPerDay>
+				<severityPerDay>-10</severityPerDay>
+			</li>
+			<li Class="VanillaPsycastsExpanded_BiotechAddition.Paths.Toxion.HediffCompProperties_PolluteWhenOverCapacity">
+				<polluteChance >0.6</polluteChance >
 			</li>
         </comps>
+    <stages>
+	  <li>
+        <label>slight</label>
+        <minSeverity>20</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.02</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.02</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.02</offset>
+          </li>
+        </capMods>
+		<painOffset>0.05</painOffset>
+      </li>
+	  <li>
+        <label>minor</label>
+        <minSeverity>40</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.04</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.04</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.04</offset>
+          </li>
+        </capMods>
+		<painOffset>0.1</painOffset>
+      </li>
+	  <li>
+        <label>normal</label>
+        <minSeverity>60</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.06</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.06</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.06</offset>
+          </li>
+        </capMods>
+		<painOffset>0.15</painOffset>
+      </li>
+      <li>
+        <label>major</label>
+        <minSeverity>80</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.08</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.08</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.08</offset>
+          </li>
+        </capMods>
+		<painOffset>0.2</painOffset>
+      </li>
+      <li>
+        <label>extreme</label>
+        <minSeverity>100</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.16</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.16</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.16</offset>
+          </li>
+        </capMods>
+		<painOffset>0.2</painOffset>
+		<painFactor>2</painFactor>
+      </li>  	  
+    </stages>
     </HediffDef>
 	<HediffDef>
     <defName>VPEBA_Poisoned</defName>
@@ -206,6 +337,11 @@
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-50</severityPerDay>
+      </li>
+	  <li Class="VanillaPsycastsExpanded_BiotechAddition.HediffCompProperties_DamageWhenMove">
+        <tickInterval>30</tickInterval>
+		<damageAmount>5</damageAmount>
+		<damageType>VPEBA_Poison</damageType>
       </li>
     </comps>
     <stages>

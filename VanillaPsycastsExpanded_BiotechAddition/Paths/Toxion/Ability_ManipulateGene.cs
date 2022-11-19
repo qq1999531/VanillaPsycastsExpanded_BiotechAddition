@@ -17,19 +17,26 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                 {
                     if (target.Thing is Pawn targetPawn)
                     {
-                        XenotypeDef template;
                         float chance = Rand.Range(0.0f, 100.0f);
+                        float chance2 = Rand.Range(0.0f, 100.0f);
                         if (chance > pawn.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_PollutionAccumulation).Severity)
                         {
-                                template = VPEBA_DefOf.VPEBA_BadGeneTemplate;
-                                List<GeneDef> Genelist = template.AllGenes;
-                                AddRandomGene(Genelist, targetPawn, false, pawn);
+                            
+                            if (chance2 > pawn.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_PollutionAccumulation).Severity)
+                            {
+                                AddRandomGene(VPEBA_DefOf.VPEBA_WorseGeneTemplate, targetPawn, false, pawn);
+                                break;
+                            }
+                                AddRandomGene(VPEBA_DefOf.VPEBA_BadGeneTemplate, targetPawn, false, pawn);
                         }
                         else
                         {
-                            template = VPEBA_DefOf.VPEBA_GoodGeneTemplate;
-                            List<GeneDef> Genelist = template.AllGenes;
-                            AddRandomGene(Genelist, targetPawn, false, pawn);
+                            if (chance2 > pawn.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_PollutionAccumulation).Severity)
+                            {
+                                AddRandomGene(VPEBA_DefOf.VPEBA_GoodGeneTemplate, targetPawn, false, pawn);
+                                break;
+                            }
+                            AddRandomGene(VPEBA_DefOf.VPEBA_BetterGeneTemplate, targetPawn, false, pawn);
                         }
                     }
                 }
@@ -41,9 +48,11 @@ namespace VanillaPsycastsExpanded_BiotechAddition
             bool check = pawn.health.hediffSet.HasHediff(VPEBA_DefOf.VPEBA_PollutionAccumulation) && pawn.health.hediffSet.GetFirstHediffOfDef(VPEBA_DefOf.VPEBA_PollutionAccumulation).Severity > 0;
             return check && base.ValidateTarget(target, showMessages);
         }
-        public void AddRandomGene(List<GeneDef> Genelist,Pawn target,bool isXenoGene,Pawn caster)
+        public void AddRandomGene(XenotypeDef template, Pawn target,bool isXenoGene,Pawn caster)
         {
-            foreach(GeneDef targetgene in Genelist)
+            List<GeneDef> Genelist = template.AllGenes;
+            Genelist.Shuffle();
+            foreach (GeneDef targetgene in Genelist)
             {
                 if (!target.genes.HasGene(targetgene))
                 {

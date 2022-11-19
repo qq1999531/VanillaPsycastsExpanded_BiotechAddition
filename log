@@ -5,7 +5,7 @@ Verse.Root:CheckGlobalInit ()
 Verse.Root:Start ()
 Verse.Root_Entry:Start ()
 
-RimWorld 1.4.3537 rev246
+RimWorld 1.4.3542 rev627
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 Verse.Log:Message (string)
 RimWorld.VersionControl:LogVersionNumber ()
@@ -145,6 +145,8 @@ Initializing new game with mods:
   - VanillaExpanded.VPsycastsE
   - shavius.vpsye.zh
   - SCXR.VanillaPsycastsExpanded_BiotechAddition
+  - PeteTimesSix.CompactHediffs
+  - Zephyr.CompactHediffsZh
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 Verse.Log:Message (string)
 (wrapper dynamic-method) Verse.Game:Verse.Game.InitNewGame_Patch0 (Verse.Game)
@@ -157,29 +159,37 @@ System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.
 System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
 System.Threading.ThreadHelper:ThreadStart ()
 
-Exception ticking VPEBA_Projectile_Poison9128: System.NullReferenceException: Object reference not set to an instance of an object
-  at VanillaPsycastsExpanded_BiotechAddition.Projectile_Poison.DoImpact (Verse.Thing hitThing, Verse.Map map) [0x00059] in <0aacc97189394a62a4bae483c8d0200a>:0 
-  at VFECore.Abilities.AbilityProjectile.Impact (Verse.Thing hitThing, System.Boolean blockedByShield) [0x00011] in <f2dc52688e3d44ce81d76d1e4aceb8c2>:0 
-  at (wrapper dynamic-method) Verse.Projectile.Verse.Projectile.ImpactSomething_Patch1(Verse.Projectile)
-  at (wrapper dynamic-method) Verse.Projectile.Verse.Projectile.Tick_Patch1(Verse.Projectile)
-  at Verse.TickList.Tick () [0x0015c] in <2a35adf0a6b2491888068e783d046a45>:0 
+JobDriver threw exception in toil unnamed's initAction for pawn Schneider driver=JobDriver_CastAbilityOnce (toilIndex=1) driver.job=(VFEA_UseAbility (Job_2603) A=(68, 0, 96))
+System.InvalidOperationException: Collection was modified; enumeration operation may not execute.
+  at System.ThrowHelper.ThrowInvalidOperationException (System.ExceptionResource resource) [0x0000b] in <eae584ce26bc40229c1b1aa476bfa589>:0 
+  at System.Collections.Generic.List`1+Enumerator[T].MoveNextRare () [0x00013] in <eae584ce26bc40229c1b1aa476bfa589>:0 
+  at System.Collections.Generic.List`1+Enumerator[T].MoveNext () [0x0004a] in <eae584ce26bc40229c1b1aa476bfa589>:0 
+  at VanillaPsycastsExpanded_BiotechAddition.Ability_PsychicGreyGoo.Cast (RimWorld.Planet.GlobalTargetInfo[] targets) [0x00326] in <e77f0b5b69cb4c82a0792377fdca8fdd>:0 
+  at VFECore.Abilities.Ability.Cast (Verse.LocalTargetInfo target) [0x0001b] in <b6703db9b23f474e9613cc6a1ebfcf55>:0 
+  at VFECore.Abilities.JobDriver_CastAbilityOnce+<>c__DisplayClass5_0.<MakeNewToils>b__3 () [0x00075] in <b6703db9b23f474e9613cc6a1ebfcf55>:0 
+  at Verse.AI.JobDriver.TryActuallyStartNextToil () [0x001b0] in <1ea541f48818430abd724fc665f76dc4>:0 
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 Verse.Log:Error (string)
+Verse.AI.JobUtility:TryStartErrorRecoverJob (Verse.Pawn,string,System.Exception,Verse.AI.JobDriver)
+Verse.AI.JobDriver:TryActuallyStartNextToil ()
+Verse.AI.JobDriver:ReadyForNextToil ()
+Verse.AI.JobDriver:DriverTick ()
+Verse.AI.Pawn_JobTracker:JobTrackerTick ()
+Verse.Pawn:Tick ()
 Verse.TickList:Tick ()
 (wrapper dynamic-method) Verse.TickManager:Verse.TickManager.DoSingleTick_Patch2 (Verse.TickManager)
 Verse.TickManager:TickManagerUpdate ()
 Verse.Game:UpdatePlay ()
 Verse.Root_Play:Update ()
 
-Exception ticking hediff (VPEBA_GreyGoo 大脑 ticksSinceCreation=1) for pawn Chantal. Removing hediff... Exception: System.NullReferenceException: Object reference not set to an instance of an object
-  at Verse.HediffSet.GetHediffs[T] (System.Collections.Generic.List`1[T]& resultHediffs, System.Predicate`1[T] filter) [0x00000] in <2a35adf0a6b2491888068e783d046a45>:0 
-  at VanillaPsycastsExpanded_BiotechAddition.HediffComp_GreyGoo.CompPostTick (System.Single& severityAdjustment) [0x00049] in <0aacc97189394a62a4bae483c8d0200a>:0 
-  at Verse.HediffWithComps.PostTick () [0x00024] in <2a35adf0a6b2491888068e783d046a45>:0 
-  at Verse.Pawn_HealthTracker.HealthTick () [0x00039] in <2a35adf0a6b2491888068e783d046a45>:0 
+Exception ticking VPEBA_Projectile_ToxExplosive7984: System.NullReferenceException: Object reference not set to an instance of an object
+  at VanillaPsycastsExpanded_BiotechAddition.Projectile_ToxExplosive.DoImpact (Verse.Thing hitThing, Verse.Map map) [0x0011f] in <e77f0b5b69cb4c82a0792377fdca8fdd>:0 
+  at VFECore.Abilities.AbilityProjectile.Impact (Verse.Thing hitThing, System.Boolean blockedByShield) [0x00011] in <b6703db9b23f474e9613cc6a1ebfcf55>:0 
+  at (wrapper dynamic-method) Verse.Projectile.Verse.Projectile.ImpactSomething_Patch1(Verse.Projectile)
+  at (wrapper dynamic-method) Verse.Projectile.Verse.Projectile.Tick_Patch1(Verse.Projectile)
+  at Verse.TickList.Tick () [0x0015c] in <1ea541f48818430abd724fc665f76dc4>:0 
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 Verse.Log:Error (string)
-Verse.Pawn_HealthTracker:HealthTick ()
-Verse.Pawn:Tick ()
 Verse.TickList:Tick ()
 (wrapper dynamic-method) Verse.TickManager:Verse.TickManager.DoSingleTick_Patch2 (Verse.TickManager)
 Verse.TickManager:TickManagerUpdate ()

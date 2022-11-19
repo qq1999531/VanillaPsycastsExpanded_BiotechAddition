@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<VPEBA_FogofToxin.label>环身毒雾</VPEBA_FogofToxin.label>
+	<VPEBA_FogofToxin.description>在周身施放毒气，如果有污染累积会污染附近地面。</VPEBA_FogofToxin.description>
+	<VPEBA_FogofToxin.jobReportString>使用能力：{0}</VPEBA_FogofToxin.jobReportString>
+	<VPEBA_FogofToxin.verbProperties.label>环身毒雾</VPEBA_FogofToxin.verbProperties.label>
+	
+	<VPEBA_Pollute.label>污染</VPEBA_Pollute.label>
+	<VPEBA_Pollute.description>如果有污染累积会污染指定区域。</VPEBA_Pollute.description>
+	<VPEBA_Pollute.jobReportString>使用能力：{0}</VPEBA_Pollute.jobReportString>
+	<VPEBA_Pollute.verbProperties.label>污染</VPEBA_Pollute.verbProperties.label>
+	
+	<VPEBA_Unpollute.label>去污</VPEBA_Unpollute.label>
+	<VPEBA_Unpollute.description>去除指定区域污染累积到自身。</VPEBA_Unpollute.description>
+	<VPEBA_Unpollute.jobReportString>使用能力：{0}</VPEBA_Unpollute.jobReportString>
+	<VPEBA_Unpollute.verbProperties.label>去污</VPEBA_Unpollute.verbProperties.label>
+	
+	<VPEBA_GrantPollutionStimulus.label>污染刺激</VPEBA_GrantPollutionStimulus.label>
+	<VPEBA_GrantPollutionStimulus.description>是目标单位获得污染刺激状态。</VPEBA_GrantPollutionStimulus.description>
+	<VPEBA_GrantPollutionStimulus.jobReportString>使用能力：{0}</VPEBA_GrantPollutionStimulus.jobReportString>
+	<VPEBA_GrantPollutionStimulus.verbProperties.label>污染刺激</VPEBA_GrantPollutionStimulus.verbProperties.label>
+	
+	<VPEBA_PsychicGreyGoo.label>灵控灰蛊</VPEBA_PsychicGreyGoo.label>
+	<VPEBA_PsychicGreyGoo.description>百分比伤害目标范围内的事物，造成污染，为施放者疗伤。</VPEBA_PsychicGreyGoo.description>
+	<VPEBA_PsychicGreyGoo.jobReportString>使用能力：{0}</VPEBA_PsychicGreyGoo.jobReportString>
+	<VPEBA_PsychicGreyGoo.verbProperties.label>灵控灰蛊</VPEBA_PsychicGreyGoo.verbProperties.label>
+	
+	<VPEBA_ToxExplosive.label>毒气爆炸</VPEBA_ToxExplosive.label>
+	<VPEBA_ToxExplosive.description>投掷毒气炸弹在目标范围内产生毒气。</VPEBA_ToxExplosive.description>
+	<VPEBA_ToxExplosive.jobReportString>使用能力：{0}</VPEBA_ToxExplosive.jobReportString>
+	<VPEBA_ToxExplosive.verbProperties.label>毒气爆炸</VPEBA_ToxExplosive.verbProperties.label>
+	
+	<VPEBA_Poison.label>猛毒</VPEBA_Poison.label>
+	<VPEBA_Poison.description>使目标单位中毒，根据移动距离造成伤害。</VPEBA_Poison.description>
+	<VPEBA_Poison.jobReportString>使用能力：{0}</VPEBA_Poison.jobReportString>
+	<VPEBA_Poison.verbProperties.label>猛毒</VPEBA_Poison.verbProperties.label>
+	
+	<VPEBA_PollutionRain.label>污雨召来</VPEBA_PollutionRain.label>
+	<VPEBA_PollutionRain.description>将天气变为污染雨。</VPEBA_PollutionRain.description>
+	<VPEBA_PollutionRain.jobReportString>使用能力：{0}</VPEBA_PollutionRain.jobReportString>
+	<VPEBA_PollutionRain.verbProperties.label>污雨召来</VPEBA_PollutionRain.verbProperties.label>
+	
+	<VPEBA_ToxShield.label>毒气屏障</VPEBA_ToxShield.label>
+	<VPEBA_ToxShield.description>使目标单位免疫毒气。</VPEBA_ToxShield.description>
+	<VPEBA_ToxShield.jobReportString>使用能力：{0}</VPEBA_ToxShield.jobReportString>
+	<VPEBA_ToxShield.verbProperties.label>毒气屏障</VPEBA_ToxShield.verbProperties.label>
+	
+	<VPEBA_ManipulateGene.label>基因操纵</VPEBA_ManipulateGene.label>
+	<VPEBA_ManipulateGene.description>为目标单位添加新的基因，污染累积越多越有可能获得有益基因。</VPEBA_ManipulateGene.description>
+	<VPEBA_ManipulateGene.jobReportString>使用能力：{0}</VPEBA_ManipulateGene.jobReportString>
+	<VPEBA_ManipulateGene.verbProperties.label>基因操纵</VPEBA_ManipulateGene.verbProperties.label>
+</LanguageData>

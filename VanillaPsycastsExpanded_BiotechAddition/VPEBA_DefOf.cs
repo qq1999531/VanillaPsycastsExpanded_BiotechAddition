@@ -15,7 +15,9 @@ namespace VanillaPsycastsExpanded_BiotechAddition
         public static ThingDef VPEBA_Fog_Tox;
         public static ThingDef VPEBA_PollutionRainMaker;
         public static XenotypeDef VPEBA_GoodGeneTemplate;
+        public static XenotypeDef VPEBA_BetterGeneTemplate;
         public static XenotypeDef VPEBA_BadGeneTemplate;
+        public static XenotypeDef VPEBA_WorseGeneTemplate;
 
         [DefAlias("VPEBA_PollutionRain")] public static WeatherDef VPEBA_PollutionRain_Weather;
         [DefAlias("VPEBA_PollutionRain")] public static GameConditionDef VPEBA_PollutionRain_Condition;

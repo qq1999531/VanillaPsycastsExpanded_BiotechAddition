@@ -27,6 +27,7 @@ namespace VanillaPsycastsExpanded_BiotechAddition
                 int dmg = (int)(((Pawn.Position - oldPosition).LengthHorizontal) * 1.25f);
                 Pawn.TakeDamage(new DamageInfo(Props.damageType, dmg,1,-1,null, vulnerableParts[rndPart]));
                 VPEBA_MoteMaker.ThrowPoisonMote(Pawn.Position.ToVector3(), Pawn.Map, 1f);
+                oldPosition = Pawn.Position;
                 tickCounter = 0;
             }
         }
